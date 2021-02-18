@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Button } from '../components/button/button'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -51,6 +52,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
+        <Button title="test"/>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
