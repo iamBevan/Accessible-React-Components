@@ -1,22 +1,5 @@
 import Head from "next/head"
-import { Dropdown } from "../components/dropdown/dropdown"
 import styles from "../styles/Home.module.css"
-
-export interface Item {
-	name: string
-	id: string
-}
-
-const items: Item[] = [
-	{ name: "Raptor", id: "raptor" },
-	{ name: "Mouse", id: "mouse" },
-	{ name: "Ox", id: "ox" },
-	{ name: "Elk", id: "elk" },
-	{ name: "Monkey", id: "monkey" },
-	{ name: "Owl", id: "owl" },
-	{ name: "Crab", id: "crab" },
-	{ name: "Otter", id: "otter" },
-]
 
 export default function Home() {
 	return (
@@ -30,11 +13,6 @@ export default function Home() {
 				<h1 className={styles.title}>
 					Welcome to <a href='https://nextjs.org'>Next.js!</a>
 				</h1>
-				<Dropdown
-					label='Test Title'
-					items={items}
-					selectedItem={items[1]}
-				/>
 			</main>
 
 			<footer className={styles.footer}>
