@@ -33,7 +33,7 @@ export default function Home() {
 				<Dropdown
 					label='Test Title'
 					items={items}
-					selectedItem={items[1]}
+					selectedItem={items[6]}
 				/>
 			</main>
 

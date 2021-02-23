@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef, createRef } from "react"
 import styles from "./dropdown.module.scss"
 import { Item } from "../../pages/index"
+import { useDisableKeyboardScroll } from "../../hooks/useDisableKeyboardScroll"
 
 interface DropdownProps {
 	label: string
 	items: Item[]
+	/**
+	 * Optionally set initial item
+	 */
 	selectedItem?: Item
 }
 
 const Dropdown: React.FC<DropdownProps> = ({ label, items, selectedItem }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selected, setSelected] = useState<Item>()
+	const listRef = createRef<HTMLUListElement>()
+	useDisableKeyboardScroll(isOpen)
 
 	useEffect(() => {
 		/**
@@ -24,6 +30,73 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, selectedItem }) => {
 		}
 	}, [])
 
+	useEffect(() => {
+		const ref = listRef.current
+		/**
+		 * Check that the ref is not null (defined when the UL is present in the DOM)
+		 * and that the isOpen === true
+		 */
+		if (ref && isOpen) {
+			/**
+			 * As the list opens and both conditions are met, shift focus from the button to the UL.
+			 * tabIndex will need to be manually set to zero for this to be possible
+			 */
+			ref.focus()
+		}
+	}, [isOpen, listRef])
+
+	useEffect(() => {
+		/**
+		 * This useEffect will run every time isOpen changes - so when it's close we want it to
+		 * bail out at this point and to none of the following
+		 */
+
+		const handleKeyUp = (event: KeyboardEvent) => {
+			if (!isOpen) {
+				return
+			}
+			event.preventDefault()
+			event.stopPropagation()
+
+			const getSelectedItemIndex = items.findIndex(
+				item => item === selected
+			)
+
+			if (event.key === "Escape") {
+				// event.preventDefault()
+				setIsOpen(false)
+			}
+			if (
+				event.key === "ArrowDown" &&
+				getSelectedItemIndex < items.length - 1
+			) {
+				const getSelectedItemIndex = items.findIndex(
+					item => item === selected
+				)
+				setSelected(items[getSelectedItemIndex + 1])
+				console.log("getSelectedItemIndex: ", getSelectedItemIndex)
+			}
+
+			if (event.key === "ArrowUp" && getSelectedItemIndex > 0) {
+				setSelected(items[getSelectedItemIndex + -1])
+				console.log("getSelectedItemIndex: ", getSelectedItemIndex)
+			}
+		}
+
+		/**
+		 * We haven't bailed out, so the list is open and we attack an event listener
+		 */
+		document.addEventListener("keyup", handleKeyUp)
+
+		return () => {
+			/**
+			 * Remove event listener when the box closes; which will cause this all to run
+			 * again, but it will bail out at the first check.
+			 */
+			document.removeEventListener("keyup", handleKeyUp)
+		}
+	}, [selected, setSelected, isOpen, listRef])
+
 	const List = (): JSX.Element => (
 		<ul
 			className={[
@@ -31,6 +104,11 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, selectedItem }) => {
 				[isOpen ? styles["hidden"] : ""],
 			].join(" ")}
 			role='listbox'
+			ref={listRef}
+			/**
+			 * tabIndex will need to be manually set here such that it can be focused
+			 */
+			tabIndex={-1}
 		>
 			{items.map((item, i) => (
 				<li
@@ -50,6 +128,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, items, selectedItem }) => {
 
 	return (
 		<div className={styles["container"]}>
+			{console.log("wanke me selected", selected)}
 			<span id='list-label'>{label}</span>
 			<div className={styles["wrapper"]}>
 				<button
