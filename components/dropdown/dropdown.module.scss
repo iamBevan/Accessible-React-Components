@@ -26,7 +26,8 @@
 
 			&:focus {
 				outline: 0;
-				box-shadow: 0 0 0 4px #3dd0e4;
+				border: 2px solid #3dd0e4;
+				box-shadow: 0 0 0 4px #3dd1e460;
 			}
 		}
 
@@ -45,7 +46,9 @@
 			border: 1px solid gray;
 
 			&:focus {
-				border: 2px solid salmon;
+				outline: 0;
+				border: 2px solid #3dd0e4;
+				box-shadow: 0 0 0 4px #3dd1e460;
 			}
 
 			&.hidden {
