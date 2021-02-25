@@ -1,4 +1,5 @@
 import Head from "next/head"
+import { useState } from "react"
 import { Dropdown } from "../components/dropdown/dropdown"
 import styles from "../styles/Home.module.css"
 
@@ -19,6 +20,13 @@ const items: Item[] = [
 ]
 
 export default function Home() {
+	const [selected, setSelected] = useState<Item>(items[2])
+	console.log("sel", selected)
+
+	const handleSelected = (item: Item) => {
+		setSelected(item)
+	}
+
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -33,7 +41,8 @@ export default function Home() {
 				<Dropdown
 					label='Test Title'
 					items={items}
-					selectedItem={items[6]}
+					selectedItem={selected}
+					changeSelected={handleSelected}
 				/>
 			</main>
 

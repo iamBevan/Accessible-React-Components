@@ -58,45 +58,40 @@
 			}
 
 			li {
-				button {
-					padding: 8px 5px;
-					display: block;
-					width: 100%;
-					font-family: -apple-system, BlinkMacSystemFont, Segoe UI,
-						Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-						Helvetica Neue, sans-serif;
-					font-size: rem(13px);
-					line-height: 1.54;
-					text-align: left;
-					word-break: break-word;
-					background: red;
+				padding: 8px 5px;
+				display: block;
+				width: 100%;
+				font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+					Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+					Helvetica Neue, sans-serif;
+				font-size: 13px;
+				text-align: left;
+				word-break: break-word;
+				background: red;
+				color: black;
+				position: relative;
+				display: flex;
+				padding: 6px 12px 6px 12px;
+				line-height: 1.67;
+				border: none;
+				transition: 0.25s background-color;
+
+				&:hover {
+					background-color: navy;
+					color: white;
+				}
+
+				&:focus {
+					background-color: navy;
+				}
+
+				&[aria-selected="true"] {
+					background-color: yellow;
 					color: black;
-					position: relative;
-					display: flex;
-					padding: 6px 12px 6px 12px;
-					font-size: 2px;
-					line-height: 1.67;
-					border: none;
-					transition: 0.25s background-color;
 
 					&:hover {
 						background-color: navy;
 						color: white;
-					}
-
-					&:focus {
-						background-color: navy;
-					}
-
-					&[aria-selected="true"] {
-						background-color: yellow;
-						color: black;
-						align-self: center;
-
-						&:hover {
-							background-color: navy;
-							color: white;
-						}
 					}
 				}
 			}
