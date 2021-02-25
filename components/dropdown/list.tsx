@@ -1,47 +1,79 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { Item } from "../../pages"
 
 interface ListProps {
 	items: Item[]
 	selectedItem: Item
 	changeSelected: (item: Item) => void
+	handleIsOpen: (isOpen: boolean) => void
+	isOpen: boolean
 }
 
-const List: React.FC<ListProps> = ({ items, changeSelected, selectedItem }) => {
+const List: React.FC<ListProps> = ({
+	items,
+	changeSelected,
+	selectedItem,
+	handleIsOpen,
+	isOpen,
+}) => {
 	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
 	const [count, setCount] = useState<number>(getSelectedItemIndex)
 
-	const props = {
-		items,
-		changeSelected,
-		selectedItem,
-	}
+	const liRefs = useRef<(HTMLLIElement | null)[]>([])
+
+	useEffect(() => {
+		liRefs.current = liRefs.current.slice(0, items.length)
+	}, [items.length])
 
 	useEffect(() => {
 		changeSelected(items[count])
 	}, [count])
 
 	useEffect(() => {
-		const handleKeyPress = (event: KeyboardEvent) => {
-			event.preventDefault()
+		if (!isOpen) {
+			return
+		}
 
+		const handleKeyPress = (event: KeyboardEvent) => {
 			if (count >= 0) {
 				if (event.key === "ArrowDown" && count < items.length - 1) {
+					event.preventDefault()
 					setCount(count + 1)
+					if (liRefs.current) {
+						liRefs.current[count]?.scrollIntoView({
+							behavior: "smooth",
+							block: "center",
+						})
+						// liRef.current.offsetParent
+					}
 				}
 
 				if (event.key === "ArrowUp" && count > 0) {
+					event.preventDefault()
 					setCount(count - 1)
+
+					if (liRefs.current) {
+						liRefs.current[count]?.scrollIntoView({
+							behavior: "smooth",
+							block: "center",
+						})
+					}
+				}
+
+				if (event.key === "Enter") {
+					handleIsOpen(false)
 				}
 			}
 		}
 
-		document.addEventListener("keydown", handleKeyPress)
+		if (isOpen) {
+			document.addEventListener("keydown", handleKeyPress)
+		}
 
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress)
 		}
-	}, [count, items.length])
+	}, [count, items.length, isOpen])
 
 	const Items = (): JSX.Element => (
 		<>
@@ -51,6 +83,7 @@ const List: React.FC<ListProps> = ({ items, changeSelected, selectedItem }) => {
 					key={i}
 					role='option'
 					aria-selected={i === count ? true : false}
+					ref={element => (liRefs.current[i] = element)}
 				>
 					{item.name}
 				</li>
@@ -60,10 +93,6 @@ const List: React.FC<ListProps> = ({ items, changeSelected, selectedItem }) => {
 
 	return (
 		<>
-			{console.log("count", count)}
-			{console.log("selected", selectedItem)}
-			{console.log("props", props)}
-
 			<Items />
 		</>
 	)

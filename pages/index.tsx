@@ -20,8 +20,7 @@ const items: Item[] = [
 ]
 
 export default function Home() {
-	const [selected, setSelected] = useState<Item>(items[2])
-	console.log("sel", selected)
+	const [selected, setSelected] = useState<Item>(items[0])
 
 	const handleSelected = (item: Item) => {
 		setSelected(item)
@@ -35,9 +34,6 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>
-					Welcome to <a href='https://nextjs.org'>Next.js!</a>
-				</h1>
 				<Dropdown
 					label='Test Title'
 					items={items}

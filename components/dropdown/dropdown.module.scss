@@ -38,6 +38,7 @@
 			transform: translateY(-4px);
 			transition: 0.25s;
 			transition-property: opacity, transform;
+			position: relative;
 			overflow-y: auto;
 			list-style: none;
 			padding: 0;
@@ -74,7 +75,7 @@
 				padding: 6px 12px 6px 12px;
 				line-height: 1.67;
 				border: none;
-				transition: 0.25s background-color;
+				// transition: 0.25s background-color;
 
 				&:hover {
 					background-color: navy;

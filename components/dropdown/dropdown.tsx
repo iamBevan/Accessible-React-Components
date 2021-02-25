@@ -37,6 +37,10 @@ const Dropdown: React.FC<DropdownProps> = ({
 		}
 	}, [isOpen])
 
+	const handleIsOpen = (open: boolean) => {
+		setIsOpen(open)
+	}
+
 	return (
 		<div className={styles["container"]}>
 			<span id='list-label'>{label}</span>
@@ -66,6 +70,8 @@ const Dropdown: React.FC<DropdownProps> = ({
 						items={items}
 						changeSelected={changeSelected}
 						selectedItem={selectedItem}
+						handleIsOpen={handleIsOpen}
+						isOpen={isOpen}
 					/>
 				</ul>
 			</div>
