@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import styles from "./dropdown.module.scss"
 import { Item } from "../../pages"
 import { List } from "./list"
+import useClickAway from "../../hooks/useClickAway"
 
 interface DropdownProps {
 	label: string
@@ -22,7 +23,10 @@ const Dropdown: React.FC<DropdownProps> = ({
 	const [isOpen, setIsOpen] = useState(false)
 	const listRef = useRef<HTMLUListElement>(null!)
 	const btnRef = useRef<HTMLButtonElement>(null!)
-
+	const wrapperRef = useRef<HTMLDivElement>(null!)
+	useClickAway(listRef, () => {
+		handleIsOpen(false)
+	})
 	useEffect(() => {
 		const ref = listRef.current
 
@@ -60,13 +64,13 @@ const Dropdown: React.FC<DropdownProps> = ({
 	return (
 		<div className={styles["container"]}>
 			<span id='list-label'>{label}</span>
-			<div className={styles["wrapper"]}>
+			<div className={styles["wrapper"]} ref={wrapperRef}>
 				<button
-					ref={btnRef}
 					aria-haspopup='listbox'
 					aria-expanded={isOpen}
 					aria-labelledby='list-label'
-					onClick={() => setIsOpen(!isOpen)}
+					onClick={() => setIsOpen(isOpen ? false : true)}
+					ref={btnRef}
 				>
 					{selectedItem?.name}
 				</button>
@@ -76,12 +80,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 						[isOpen ? styles["hidden"] : ""],
 					].join(" ")}
 					role='listbox'
-					ref={listRef}
 					/**
 					 * tabIndex will need to be manually set here such that it can be focused
 					 */
 					tabIndex={-1}
 					aria-activedescendant={selectedItem?.id}
+					ref={listRef}
 				>
 					<List
 						items={items}
@@ -89,7 +93,6 @@ const Dropdown: React.FC<DropdownProps> = ({
 						selectedItem={selectedItem}
 						handleIsOpen={handleIsOpen}
 						isOpen={isOpen}
-						outerRef={listRef}
 					/>
 				</ul>
 			</div>

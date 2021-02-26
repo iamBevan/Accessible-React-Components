@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef, MutableRefObject } from "react"
-import useClickAway from "../../hooks/useClickAway"
+import React, { useEffect, useState, useRef } from "react"
 import { Item } from "../../pages"
 
 interface ListProps {
@@ -8,7 +7,6 @@ interface ListProps {
 	changeSelected: (item: Item) => void
 	handleIsOpen: (isOpen: boolean) => void
 	isOpen: boolean
-	outerRef: MutableRefObject<HTMLUListElement>
 }
 
 const List: React.FC<ListProps> = ({
@@ -17,14 +15,10 @@ const List: React.FC<ListProps> = ({
 	selectedItem,
 	handleIsOpen,
 	isOpen,
-	outerRef,
 }) => {
 	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
 	const [count, setCount] = useState<number>(getSelectedItemIndex)
 	const liRefs = useRef<(HTMLLIElement | null)[]>([])
-	useClickAway(outerRef, () => {
-		handleIsOpen(false)
-	})
 
 	useEffect(() => {
 		liRefs.current = liRefs.current.slice(0, items.length)
@@ -43,18 +37,17 @@ const List: React.FC<ListProps> = ({
 			if (count >= 0) {
 				if (event.key === "ArrowDown" && count < items.length - 1) {
 					event.preventDefault()
-					setCount(count + 1)
 					if (liRefs.current) {
 						liRefs.current[count + 1]?.scrollIntoView({
 							behavior: "smooth",
 							block: "nearest",
 						})
 					}
+					setCount(count + 1)
 				}
 
 				if (event.key === "ArrowUp" && count > 0) {
 					event.preventDefault()
-					setCount(count - 1)
 
 					if (liRefs.current) {
 						liRefs.current[count - 1]?.scrollIntoView({
@@ -62,6 +55,7 @@ const List: React.FC<ListProps> = ({
 							block: "nearest",
 						})
 					}
+					setCount(count - 1)
 				}
 
 				if (event.key === "Enter" || event.key === "Escape") {
@@ -88,6 +82,10 @@ const List: React.FC<ListProps> = ({
 					role='option'
 					aria-selected={i === count ? true : false}
 					ref={element => (liRefs.current[i] = element)}
+					onClick={() => {
+						changeSelected(item)
+						handleIsOpen(false)
+					}}
 				>
 					{item.name}
 				</li>
