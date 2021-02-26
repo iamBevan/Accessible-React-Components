@@ -17,7 +17,7 @@
 				Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
 				sans-serif;
 			border-radius: 3px;
-			border: 1px solid gray;
+			border: 2px solid gray;
 			text-align: left;
 			padding: 8px;
 			width: 100%;
@@ -45,6 +45,10 @@
 			margin: 0;
 			border-radius: 3px;
 			border: 1px solid gray;
+			scroll-snap-stop: always;
+
+			// scroll-snap-type: both mandatory;
+			// scroll-snap-type: mandatory;
 
 			&:focus {
 				outline: 0;
@@ -59,7 +63,7 @@
 			}
 
 			li {
-				padding: 8px 5px;
+				padding: 4px 2.5px;
 				display: block;
 				width: 100%;
 				font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
@@ -68,13 +72,12 @@
 				font-size: 13px;
 				text-align: left;
 				word-break: break-word;
-				background: red;
 				color: black;
 				position: relative;
 				display: flex;
-				padding: 6px 12px 6px 12px;
 				line-height: 1.67;
 				border: none;
+
 				// transition: 0.25s background-color;
 
 				&:hover {
@@ -87,7 +90,7 @@
 				}
 
 				&[aria-selected="true"] {
-					background-color: yellow;
+					box-shadow: inset 0 0 0 4px #3dd0e4;
 					color: black;
 
 					&:hover {

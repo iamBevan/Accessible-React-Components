@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useRef, MutableRefObject } from "react"
+import { useDisableKeyboardScroll } from "../../hooks/useDisableKeyboardScroll"
 import { Item } from "../../pages"
 
 interface ListProps {
@@ -7,6 +8,7 @@ interface ListProps {
 	changeSelected: (item: Item) => void
 	handleIsOpen: (isOpen: boolean) => void
 	isOpen: boolean
+	outerRef: MutableRefObject<HTMLUListElement>
 }
 
 const List: React.FC<ListProps> = ({
@@ -15,11 +17,13 @@ const List: React.FC<ListProps> = ({
 	selectedItem,
 	handleIsOpen,
 	isOpen,
+	outerRef,
 }) => {
 	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
 	const [count, setCount] = useState<number>(getSelectedItemIndex)
-
 	const liRefs = useRef<(HTMLLIElement | null)[]>([])
+
+	// useDisableKeyboardScroll()
 
 	useEffect(() => {
 		liRefs.current = liRefs.current.slice(0, items.length)
@@ -34,17 +38,28 @@ const List: React.FC<ListProps> = ({
 			return
 		}
 
+		const handleClick = (e: MouseEvent): void => {
+			if (
+				outerRef.current &&
+				!outerRef.current.contains(e.target as Node)
+			) {
+				handleIsOpen(false)
+			}
+		}
+
 		const handleKeyPress = (event: KeyboardEvent) => {
 			if (count >= 0) {
 				if (event.key === "ArrowDown" && count < items.length - 1) {
 					event.preventDefault()
 					setCount(count + 1)
 					if (liRefs.current) {
-						liRefs.current[count]?.scrollIntoView({
-							behavior: "smooth",
-							block: "center",
-						})
-						// liRef.current.offsetParent
+						liRefs.current[count + 1]?.scrollIntoView(
+							// true
+							{
+								behavior: "smooth",
+								block: "nearest",
+							}
+						)
 					}
 				}
 
@@ -53,9 +68,9 @@ const List: React.FC<ListProps> = ({
 					setCount(count - 1)
 
 					if (liRefs.current) {
-						liRefs.current[count]?.scrollIntoView({
+						liRefs.current[count - 1]?.scrollIntoView({
 							behavior: "smooth",
-							block: "center",
+							block: "nearest",
 						})
 					}
 				}
@@ -68,12 +83,20 @@ const List: React.FC<ListProps> = ({
 
 		if (isOpen) {
 			document.addEventListener("keydown", handleKeyPress)
+			document.addEventListener("mousedown", handleClick)
 		}
 
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress)
+			document.removeEventListener("mousedown", handleClick)
 		}
 	}, [count, items.length, isOpen])
+
+	// useEffect(() => {
+	// 	if (liRefs.current) {
+	// 		liRefs.current[count]?.scrollIntoView()
+	// 	}
+	// }, [count])
 
 	const Items = (): JSX.Element => (
 		<>
@@ -93,6 +116,7 @@ const List: React.FC<ListProps> = ({
 
 	return (
 		<>
+			{console.log("outerRefs", liRefs)}
 			<Items />
 		</>
 	)

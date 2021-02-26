@@ -17,10 +17,16 @@ const items: Item[] = [
 	{ name: "Owl", id: "owl" },
 	{ name: "Crab", id: "crab" },
 	{ name: "Otter", id: "otter" },
+	{ name: "Dingo", id: "dingo" },
+	{ name: "Fruit Bat", id: "fruitbat" },
+	{ name: "Ostritch", id: "ostritch" },
+	{ name: "Eel", id: "eel" },
+	{ name: "Kestral", id: "kestral" },
+	{ name: "Spider", id: "spider" },
 ]
 
 export default function Home() {
-	const [selected, setSelected] = useState<Item>(items[0])
+	const [selected, setSelected] = useState<Item>(items[3])
 
 	const handleSelected = (item: Item) => {
 		setSelected(item)
@@ -34,6 +40,7 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
+				<button>Focusable Button</button>
 				<Dropdown
 					label='Test Title'
 					items={items}

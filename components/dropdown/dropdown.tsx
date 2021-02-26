@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef } from "react"
+import React, { useEffect, useState, createRef, useRef } from "react"
 import styles from "./dropdown.module.scss"
 import { Item } from "../../pages"
 import { List } from "./list"
@@ -21,9 +21,32 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const listRef = createRef<HTMLUListElement>()
+	const btnRef = useRef<HTMLButtonElement>(null!)
+
+	// useEffect(() => {
+	// 	if (!open) {
+	// 		return
+	// 	}
+
+	// 	const handleClick = (e: MouseEvent): void => {
+	// 		if (
+	// 			listRef.current &&
+	// 			!listRef.current.contains(e.target as Node)
+	// 		) {
+	// 			setIsOpen(false)
+	// 		}
+	// 	}
+
+	// 	document.addEventListener("mousedown", handleClick)
+
+	// 	return () => {
+	// 		document.removeEventListener("mousedown", handleClick)
+	// 	}
+	// }, [isOpen])
 
 	useEffect(() => {
 		const ref = listRef.current
+
 		/**
 		 * Check that the ref is not null (defined when the UL is present in the DOM)
 		 * and that the isOpen === true
@@ -37,7 +60,21 @@ const Dropdown: React.FC<DropdownProps> = ({
 		}
 	}, [isOpen])
 
-	const handleIsOpen = (open: boolean) => {
+	useEffect(() => {
+		const returnFocus = (): void => {
+			const ref = btnRef.current
+
+			if (ref && isOpen) {
+				ref.focus()
+			}
+		}
+
+		return () => {
+			returnFocus()
+		}
+	}, [isOpen])
+
+	const handleIsOpen = (open: boolean): void => {
 		setIsOpen(open)
 	}
 
@@ -46,6 +83,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 			<span id='list-label'>{label}</span>
 			<div className={styles["wrapper"]}>
 				<button
+					ref={btnRef}
 					aria-haspopup='listbox'
 					aria-expanded={isOpen}
 					aria-labelledby='list-label'
@@ -72,6 +110,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 						selectedItem={selectedItem}
 						handleIsOpen={handleIsOpen}
 						isOpen={isOpen}
+						outerRef={listRef}
 					/>
 				</ul>
 			</div>
