@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createRef, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import styles from "./dropdown.module.scss"
 import { Item } from "../../pages"
 import { List } from "./list"
@@ -20,29 +20,8 @@ const Dropdown: React.FC<DropdownProps> = ({
 	changeSelected,
 }) => {
 	const [isOpen, setIsOpen] = useState(false)
-	const listRef = createRef<HTMLUListElement>()
+	const listRef = useRef<HTMLUListElement>(null!)
 	const btnRef = useRef<HTMLButtonElement>(null!)
-
-	// useEffect(() => {
-	// 	if (!open) {
-	// 		return
-	// 	}
-
-	// 	const handleClick = (e: MouseEvent): void => {
-	// 		if (
-	// 			listRef.current &&
-	// 			!listRef.current.contains(e.target as Node)
-	// 		) {
-	// 			setIsOpen(false)
-	// 		}
-	// 	}
-
-	// 	document.addEventListener("mousedown", handleClick)
-
-	// 	return () => {
-	// 		document.removeEventListener("mousedown", handleClick)
-	// 	}
-	// }, [isOpen])
 
 	useEffect(() => {
 		const ref = listRef.current
@@ -102,7 +81,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 					 * tabIndex will need to be manually set here such that it can be focused
 					 */
 					tabIndex={-1}
-					aria-activedescendant={selectedItem.id}
+					aria-activedescendant={selectedItem?.id}
 				>
 					<List
 						items={items}
