@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, MutableRefObject } from "react"
-import { useDisableKeyboardScroll } from "../../hooks/useDisableKeyboardScroll"
+import useClickAway from "../../hooks/useClickAway"
 import { Item } from "../../pages"
 
 interface ListProps {
@@ -22,8 +22,9 @@ const List: React.FC<ListProps> = ({
 	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
 	const [count, setCount] = useState<number>(getSelectedItemIndex)
 	const liRefs = useRef<(HTMLLIElement | null)[]>([])
-
-	// useDisableKeyboardScroll()
+	useClickAway(outerRef, () => {
+		handleIsOpen(false)
+	})
 
 	useEffect(() => {
 		liRefs.current = liRefs.current.slice(0, items.length)
@@ -38,28 +39,16 @@ const List: React.FC<ListProps> = ({
 			return
 		}
 
-		const handleClick = (e: MouseEvent): void => {
-			if (
-				outerRef.current &&
-				!outerRef.current.contains(e.target as Node)
-			) {
-				handleIsOpen(false)
-			}
-		}
-
 		const handleKeyPress = (event: KeyboardEvent) => {
 			if (count >= 0) {
 				if (event.key === "ArrowDown" && count < items.length - 1) {
 					event.preventDefault()
 					setCount(count + 1)
 					if (liRefs.current) {
-						liRefs.current[count + 1]?.scrollIntoView(
-							// true
-							{
-								behavior: "smooth",
-								block: "nearest",
-							}
-						)
+						liRefs.current[count + 1]?.scrollIntoView({
+							behavior: "smooth",
+							block: "nearest",
+						})
 					}
 				}
 
@@ -75,7 +64,7 @@ const List: React.FC<ListProps> = ({
 					}
 				}
 
-				if (event.key === "Enter") {
+				if (event.key === "Enter" || event.key === "Escape") {
 					handleIsOpen(false)
 				}
 			}
@@ -83,20 +72,12 @@ const List: React.FC<ListProps> = ({
 
 		if (isOpen) {
 			document.addEventListener("keydown", handleKeyPress)
-			document.addEventListener("mousedown", handleClick)
 		}
 
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress)
-			document.removeEventListener("mousedown", handleClick)
 		}
 	}, [count, items.length, isOpen])
-
-	// useEffect(() => {
-	// 	if (liRefs.current) {
-	// 		liRefs.current[count]?.scrollIntoView()
-	// 	}
-	// }, [count])
 
 	const Items = (): JSX.Element => (
 		<>
@@ -116,7 +97,6 @@ const List: React.FC<ListProps> = ({
 
 	return (
 		<>
-			{console.log("outerRefs", liRefs)}
 			<Items />
 		</>
 	)
