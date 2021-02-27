@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Key } from "../helpers/keyCodes";
+import { useEffect } from "react"
+import { Key } from "../components/dropdown/helpers/keyCodes"
 
 /**
  * Use this hook to disable keyboard scrolling
@@ -19,25 +19,25 @@ const useDisableKeyboardScroll = (
 			Key.UpArrow,
 			Key.RightArrow,
 			Key.DownArrow,
-		];
+		]
 
 		if (additionalKeys) {
-			keys = keys.concat(additionalKeys);
+			keys = keys.concat(additionalKeys)
 		}
 
 		const disableKeyDefaults = (e: KeyboardEvent): void => {
 			if (keys.indexOf(e.keyCode) > -1) {
-				e.preventDefault();
+				e.preventDefault()
 			}
-		};
+		}
 
 		if (isOpen) {
-			document.addEventListener("keydown", disableKeyDefaults);
+			document.addEventListener("keydown", disableKeyDefaults)
 		}
 		return () => {
-			document.removeEventListener("keydown", disableKeyDefaults);
-		};
-	}, [additionalKeys, isOpen]);
-};
+			document.removeEventListener("keydown", disableKeyDefaults)
+		}
+	}, [additionalKeys, isOpen])
+}
 
-export { useDisableKeyboardScroll };
+export { useDisableKeyboardScroll }

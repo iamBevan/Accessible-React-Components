@@ -57,6 +57,7 @@ module.exports = {
 		// Disabling rule as prop type can be inferred from the
 		// type parameter provided in TypeScript
 		"react/prop-types": "off",
+		"react/react-in-jsx-scope": "off",
 
 		// Hook specific rules
 		"react-hooks/rules-of-hooks": "error",

@@ -26,14 +26,14 @@ const List: React.FC<ListProps> = ({
 
 	useEffect(() => {
 		changeSelected(items[count])
-	}, [count])
+	}, [changeSelected, count, items])
 
 	useEffect(() => {
 		if (!isOpen) {
 			return
 		}
 
-		const handleKeyPress = (event: KeyboardEvent) => {
+		const handleKeyPress = (event: KeyboardEvent): void => {
 			if (count >= 0) {
 				if (event.key === "ArrowDown" && count < items.length - 1) {
 					event.preventDefault()
@@ -71,7 +71,7 @@ const List: React.FC<ListProps> = ({
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress)
 		}
-	}, [count, items.length, isOpen])
+	}, [count, items.length, isOpen, handleIsOpen])
 
 	const Items = (): JSX.Element => (
 		<>
@@ -83,6 +83,10 @@ const List: React.FC<ListProps> = ({
 					aria-selected={i === count ? true : false}
 					ref={element => (liRefs.current[i] = element)}
 					onClick={() => {
+						changeSelected(item)
+						handleIsOpen(false)
+					}}
+					onKeyPress={() => {
 						changeSelected(item)
 						handleIsOpen(false)
 					}}

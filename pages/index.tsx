@@ -25,10 +25,10 @@ const items: Item[] = [
 	{ name: "Spider", id: "spider" },
 ]
 
-export default function Home() {
+export default function Home(): JSX.Element {
 	const [selected, setSelected] = useState<Item>(items[3])
 
-	const handleSelected = (item: Item) => {
+	const handleSelected = (item: Item): void => {
 		setSelected(item)
 	}
 
