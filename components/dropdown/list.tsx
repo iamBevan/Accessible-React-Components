@@ -85,10 +85,13 @@ const List: React.FC<ListProps> = ({
 					onClick={() => {
 						changeSelected(item)
 						handleIsOpen(false)
+						setCount(i)
 					}}
-					onKeyPress={() => {
-						changeSelected(item)
-						handleIsOpen(false)
+					onKeyPress={(e: React.KeyboardEvent<HTMLLIElement>) => {
+						if (e.key === "Enter") {
+							changeSelected(item)
+							handleIsOpen(false)
+						}
 					}}
 				>
 					{item.name}

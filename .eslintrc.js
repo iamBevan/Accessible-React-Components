@@ -74,6 +74,8 @@ module.exports = {
 		"@typescript-eslint/no-unsafe-member-access": "off",
 		"@typescript-eslint/no-unsafe-call": "off",
 
+		"@typescript-eslint/no-non-null-assertion": "off",
+
 		// Allow use of promises where void return is expected (e.g. setTimeout(asyncFunction, 100))
 		"@typescript-eslint/no-misused-promises": [
 			"error",
