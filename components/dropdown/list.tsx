@@ -3,7 +3,7 @@ import { Item } from "../../pages"
 
 interface ListProps {
 	items: Item[]
-	selectedItem: Item
+	selectedItem?: Item
 	changeSelected: (item: Item) => void
 	handleIsOpen: (isOpen: boolean) => void
 	isOpen: boolean
@@ -16,7 +16,9 @@ const List: React.FC<ListProps> = ({
 	handleIsOpen,
 	isOpen,
 }) => {
-	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
+	const getSelectedItemIndex = selectedItem
+		? items.findIndex(item => item === selectedItem)
+		: 0
 	const [count, setCount] = useState<number>(getSelectedItemIndex)
 	const liRefs = useRef<(HTMLLIElement | null)[]>([])
 

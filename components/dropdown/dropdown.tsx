@@ -10,7 +10,7 @@ interface DropdownProps {
 	/**
 	 * Optionally set initial item
 	 */
-	selectedItem: Item
+	selectedItem?: Item
 	changeSelected: (item: Item) => void
 }
 
@@ -92,7 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 					<List
 						items={items}
 						changeSelected={changeSelected}
-						selectedItem={selectedItem}
+						// selectedItem={selectedItem}
 						handleIsOpen={handleIsOpen}
 						isOpen={isOpen}
 					/>
