@@ -63,7 +63,9 @@ const Dropdown: React.FC<DropdownProps> = ({
 
 	return (
 		<div className={styles["container"]}>
-			<span id='list-label'>{label}</span>
+			<span id='list-label' className={styles["sr-label"]}>
+				{label}
+			</span>
 			<div className={styles["wrapper"]} ref={wrapperRef}>
 				<button
 					aria-haspopup='listbox'
