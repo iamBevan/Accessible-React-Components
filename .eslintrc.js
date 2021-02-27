@@ -22,11 +22,7 @@ module.exports = {
 		"plugin:jsx-a11y/recommended",
 
 		// Prettier rules for each plugin
-		// to disable styling and formatting related rules.
-		// Those are handled by Prettier (See @cdsm/prettier-config)
 		"prettier",
-		// "prettier/@typescript-eslint",
-		// "prettier/react",
 	],
 	plugins: ["react", "react-hooks", "@typescript-eslint", "jsx-a11y"],
 
