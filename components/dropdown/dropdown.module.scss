@@ -1,7 +1,4 @@
 .container{
-	--focus:#db0a5b;
-	--focus-shadow:#db0a5a17;
-
 	height:60px; width:200px;
 
 	.sr-label{
@@ -25,6 +22,8 @@
 			border-radius:5px; border:2px solid #919191; background-color:#fff; color:#4d4d4d;
 			text-align:left;
 
+			transition:0.25s; transition-property:border;
+
 
 			&:focus{
 				outline:0;
@@ -36,10 +35,12 @@
 				border-color:#94949449;
 
 				&:hover{
-					// color:#fff;
-					// background-color:#F75996;
-					// box-shadow:0 0 0 2px #F75996, inset 0 0 0 1px #FFF;
+					border-color:#919191;
 				}
+			}
+
+			&:hover{
+				border-color:#686868;
 			}
 		}
 
@@ -57,6 +58,8 @@
 			border-radius:5px; border:2px solid #949494;
 			z-index:100;
 
+			box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.1);
+
 			&::-webkit-scrollbar{
 				display:none;
 			}
@@ -64,7 +67,7 @@
 			&:focus{
 				outline:0;
 				border:2px solid var(--focus);
-				box-shadow:0 0 0 4px var(--focus-shadow);
+				// box-shadow:0 0 0 4px var(--focus-shadow);
 			}
 
 			&.hidden{
@@ -84,9 +87,16 @@
 				background-color:#fff;
 				border-radius:5px;
 
+				transition:0.1s; transition-property:background-color, color;
+
+				&:focus{
+					background-color:red;
+				}
+
 				&:hover{
 					color:#fff;
 					background-color:#F75996;
+					cursor:pointer;
 				}
 
 				&[aria-selected='true']{
