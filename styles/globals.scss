@@ -5,11 +5,16 @@
 	--focus-shadow:#db0a5a17;
 
 	--font-family:'Montserrat', sans-serif;
+
+	--primary-dark:#393737;
+	--secondary-dark:#919191;
+	--tertiary-dark:rgba(148, 148, 148, 0.3)
 }
 
 html, body{
 	padding:0; margin:0;
 	font-family:var(--font-family);
+	color:var(--primary-dark);
 }
 
 a{

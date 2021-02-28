@@ -21,8 +21,8 @@
 			width:100%; height:40px;
 			padding:0 8px;
 			font-size:16px; font-weight:500;
-			border-radius:5px; border:2px solid #919191;
-			background-color:#fff; color:#4d4d4d;
+			border-radius:5px; border:2px solid var(--secondary-dark);
+			background-color:#fff; color:var(--primary-dark);
 			text-align:left;
 
 			transition:0.25s;transition-property:border;
@@ -34,26 +34,15 @@
 			}
 
 			&[aria-expanded='true']{
-				border-color:#94949449;
-				.arrow{
-					> div > div{
-						background-color:var(--focus);
-					}
-				}
+				border-color:var(--tertiary-dark);
 
 				&:hover{
-					border-color:#919191;
+					border-color:var(--secondary-dark);
 				}
 			}
 
 			&:hover{
-				border-color:#686868;
-
-				.arrow{
-					> div > div{
-						background-color:var(--focus);
-					}
-				}
+				border-color:var(--primary-dark);
 			}
 
 			.arrow{
@@ -94,7 +83,7 @@
 				margin:3px; padding:6px 8px 6px 8px;
 				display:block;
 				font-size:14px; font-weight:500; text-align:left;
-				color:#4d4d4d;
+				color:var(--primary-dark);
 				position:relative;
 				border:none;
 				background-color:#fff;
@@ -103,18 +92,18 @@
 
 				&:hover{
 					color:#fff;
-					background-color:#F75996;
+					background-color:var(--focus);
 					cursor:pointer;
 				}
 
 				&[aria-selected='true']{
 					color:#fff;
-					background-color:#F75996;
+					background-color:var(--focus);
 
 					&:hover{
 						color:#fff;
 						background-color:#F75996;
-						box-shadow:0 0 0 2px #F75996, inset 0 0 0 1px #FFF;
+						box-shadow:0 0 0 2px var(--focus), inset 0 0 0 1px #FFF;
 					}
 				}
 			}
