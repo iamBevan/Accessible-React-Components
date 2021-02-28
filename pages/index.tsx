@@ -1,37 +1,7 @@
 import Head from "next/head"
-import { useState } from "react"
-import { Dropdown } from "../components/dropdown/dropdown"
 import styles from "../styles/home.module.scss"
 
-export interface Item {
-	name: string
-	id: string
-}
-
-const items: Item[] = [
-	{ name: "Raptor", id: "raptor" },
-	{ name: "Mouse", id: "mouse" },
-	{ name: "Ox", id: "ox" },
-	{ name: "Elk", id: "elk" },
-	{ name: "Monkey", id: "monkey" },
-	{ name: "Owl", id: "owl" },
-	{ name: "Crab", id: "crab" },
-	{ name: "Otter", id: "otter" },
-	{ name: "Dingo", id: "dingo" },
-	{ name: "Fruit Bat", id: "fruitbat" },
-	{ name: "Ostritch", id: "ostritch" },
-	{ name: "Eel", id: "eel" },
-	{ name: "Kestral", id: "kestral" },
-	{ name: "Spider", id: "spider" },
-]
-
 export default function Home(): JSX.Element {
-	const [selected, setSelected] = useState<Item>(items[3])
-
-	const handleSelected = (item: Item): void => {
-		setSelected(item)
-	}
-
 	return (
 		<div className={styles.container}>
 			<Head>
@@ -40,12 +10,14 @@ export default function Home(): JSX.Element {
 			</Head>
 
 			<main className={styles.main}>
-				<Dropdown
-					label='Test Title'
-					items={items}
-					selectedItem={selected}
-					changeSelected={handleSelected}
-				/>
+				<h1 className={styles["title"]}>
+					<span>Accessible </span>
+					React Components
+				</h1>
+				<div>
+					<a href='/components'>Components</a>
+					<a href='/blog'>Blog</a>
+				</div>
 			</main>
 
 			<footer className={styles.footer}>
