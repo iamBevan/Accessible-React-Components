@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react"
 import styles from "./dropdown.module.scss"
-import { Item } from "../../pages"
 import { List } from "./list"
-import useClickAway from "../../hooks/useClickAway"
 import { Arrow } from "../arrow/arrow"
+import { Item } from "../../misc/mockData/interfaces"
+import { useClickAway } from "react-use"
 
 interface DropdownProps {
 	label: string
