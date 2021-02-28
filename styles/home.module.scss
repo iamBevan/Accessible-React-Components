@@ -21,6 +21,7 @@
 		font-weight:900;
 		line-height:1.15;
 		font-size:5rem;
+		color:#393737;
 
 		span{
 			color:var(--focus);
@@ -32,8 +33,28 @@
 		font-size:1.5rem;
 	}
 
-	.buttons {
+	.buttons{
+		margin:50px 0;
 
+		a{
+			color:#393737;
+			font-weight:500;
+			display:inline-block;
+			margin:0 20px; padding:10px;
+			width:150px;
+			border-radius:5px;
+			border:2px solid #94949449;
+
+			&:hover{
+				border-color:#919191;
+			}
+
+			&:focus{
+				outline:0;
+				border:2px solid var(--focus);
+				box-shadow:0 0 0 4px var(--focus-shadow);
+			}
+		}
 	}
 }
 

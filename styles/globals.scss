@@ -3,11 +3,13 @@
 :root{
 	--focus:#db0a5b;
 	--focus-shadow:#db0a5a17;
+
+	--font-family:'Montserrat', sans-serif;
 }
 
 html, body{
 	padding:0; margin:0;
-	font-family:'Montserrat', sans-serif;
+	font-family:var(--font-family);
 }
 
 a{

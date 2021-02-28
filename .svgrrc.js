@@ -10,11 +10,7 @@ module.exports = {
 		"#000": "{props.color}",
 		"#000000": "{props.color}",
 	},
-	template(
-		{ template },
-		opts,
-		{ imports, componentName, props, jsx, exports }
-	) {
+	template({ template }, { componentName, jsx }) {
 		const typeScriptTpl = template.smart({
 			plugins: ["typescript"],
 			preserveComments: true,

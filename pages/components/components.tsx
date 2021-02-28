@@ -1,3 +1,4 @@
+import Head from "next/head"
 import React, { useState } from "react"
 import { Dropdown } from "../../components/dropdown/dropdown"
 import { Item } from "../../misc/mockData/interfaces"
@@ -13,13 +14,20 @@ export function Components(): JSX.Element {
 
 	return (
 		<div className={styles["container"]}>
+			<Head>
+				<title>Components</title>
+			</Head>
 			<h1>Components</h1>
-			<h2>Dropdown</h2>
-			<Dropdown
-				items={items}
-				changeSelected={handleSelected}
-				label='Dropdown Example'
-			/>
+			<section>
+				<h2>Dropdown</h2>
+				<div className={styles["dropdown"]}>
+					<Dropdown
+						items={items}
+						changeSelected={handleSelected}
+						label='Dropdown Example'
+					/>
+				</div>
+			</section>
 		</div>
 	)
 }

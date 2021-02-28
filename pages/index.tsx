@@ -14,7 +14,7 @@ export default function Home(): JSX.Element {
 					<span>Accessible </span>
 					React Components
 				</h1>
-				<div>
+				<div className={styles["buttons"]}>
 					<a href='/components'>Components</a>
 					<a href='/blog'>Blog</a>
 				</div>
