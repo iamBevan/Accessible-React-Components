@@ -3,6 +3,7 @@ import styles from "./dropdown.module.scss"
 import { Item } from "../../pages"
 import { List } from "./list"
 import useClickAway from "../../hooks/useClickAway"
+import { Arrow } from "../arrow/arrow"
 
 interface DropdownProps {
 	label: string
@@ -74,7 +75,10 @@ const Dropdown: React.FC<DropdownProps> = ({
 					onClick={() => setIsOpen(isOpen ? false : true)}
 					ref={btnRef}
 				>
-					{selectedItem?.name}
+					<span>{selectedItem?.name}</span>
+					<div className={styles["arrow"]}>
+						<Arrow isOpen={isOpen} />
+					</div>
 				</button>
 				<ul
 					className={[
