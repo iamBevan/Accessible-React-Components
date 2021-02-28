@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"test:watch": "jest --watch"
+		"test:watch": "jest --watch",
+		"generate-icons": "npx @svgr/cli -d components/icons/icons components/icons/svg --ext=tsx"
 	},
 	"dependencies": {
 		"@typescript-eslint/parser": "^4.15.2",
