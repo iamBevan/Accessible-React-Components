@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react"
-import { Item } from "../../pages"
+import { Item } from "../../misc/mockData/interfaces"
 
 interface ListProps {
 	items: Item[]
