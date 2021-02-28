@@ -1,11 +1,11 @@
 import Head from "next/head"
 import React, { useState } from "react"
-import { Dropdown } from "../../components/dropdown/dropdown"
-import { Item } from "../../misc/mockData/interfaces"
-import { items } from "../../misc/mockData/mockData"
-import styles from "./components.module.scss"
+import { Dropdown } from "../components/dropdown/dropdown"
+import { Item } from "../misc/mockData/interfaces"
+import { items } from "../misc/mockData/mockData"
+import styles from "../styles/pages/components.module.scss"
 
-export function Components(): JSX.Element {
+export default function Components(): JSX.Element {
 	const [, setSelected] = useState<Item>(items[3])
 
 	const handleSelected = (item: Item): void => {
