@@ -62,7 +62,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 		return () => {
 			returnFocus()
 		}
-	}, [isOpen])
+	}, [])
 
 	return (
 		<div className={styles["container"]}>
