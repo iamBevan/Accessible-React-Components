@@ -22,12 +22,18 @@ const Dropdown: React.FC<DropdownProps> = ({
 	changeSelected,
 }) => {
 	const [isOpen, setIsOpen] = useState(false)
-	const listRef = useRef<HTMLUListElement>(null!)
-	const btnRef = useRef<HTMLButtonElement>(null!)
-	const wrapperRef = useRef<HTMLDivElement>(null!)
+	const listRef = useRef<HTMLUListElement>(null)
+	const btnRef = useRef<HTMLButtonElement>(null)
+	const wrapperRef = useRef<HTMLDivElement>(null)
+
+	const handleIsOpen = (open: boolean): void => {
+		setIsOpen(open)
+	}
+
 	useClickAway(listRef, () => {
 		handleIsOpen(false)
 	})
+
 	useEffect(() => {
 		const ref = listRef.current
 
@@ -57,10 +63,6 @@ const Dropdown: React.FC<DropdownProps> = ({
 			returnFocus()
 		}
 	}, [isOpen])
-
-	const handleIsOpen = (open: boolean): void => {
-		setIsOpen(open)
-	}
 
 	return (
 		<div className={styles["container"]}>
@@ -96,7 +98,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 					<List
 						items={items}
 						changeSelected={changeSelected}
-						// selectedItem={selectedItem}
+						selectedItem={selectedItem}
 						handleIsOpen={handleIsOpen}
 						isOpen={isOpen}
 					/>

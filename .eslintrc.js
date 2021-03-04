@@ -2,91 +2,41 @@ module.exports = {
 	env: {
 		browser: true,
 		node: true,
-
-		// Adds all ECMAScript globals and automatically
-		// and sets ecmaVersion parser option
-		es2021: true,
+		es2020: true,
 	},
-	extends: [
-		// Generally recommended ESLint rules for all projects
-		"eslint:recommended",
-
-		// TypeScript specific recommended rules
-		"plugin:@typescript-eslint/recommended",
-		"plugin:@typescript-eslint/recommended-requiring-type-checking",
-
-		// React specific recommended rules
-		"plugin:react/recommended",
-
-		// Recommended accessibility rules (a11y)
-		"plugin:jsx-a11y/recommended",
-
-		// Prettier rules for each plugin
-		"prettier",
-	],
-	plugins: ["react", "react-hooks", "@typescript-eslint", "jsx-a11y"],
-
-	// The parser to convert TypeScript to an Abstract Syntax Tree
-	// which eslint can process.
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
+		ecmaVersion: 2020,
 		sourceType: "module",
-		project: "./tsconfig.json",
-	},
-
-	// Override rules here
-	rules: {
-		// While useful for debugging, it's not good practice
-		// to leave console logs in the production output.
-		"no-console": [
-			"warn",
-			{
-				allow: ["warn", "error"],
-			},
-		],
-
-		// Enforce specifying a return type for functions,
-		// but allow implicit for expressions
-		"@typescript-eslint/explicit-function-return-type": [
-			"warn",
-			{
-				allowExpressions: true,
-			},
-		],
-
-		// Disabling rule as prop type can be inferred from the
-		// type parameter provided in TypeScript
-		"react/prop-types": "off",
-		"react/react-in-jsx-scope": "off",
-
-		// Hook specific rules
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "warn",
-
-		// These floating promises seem to be commonly used and accepted in React projects.
-		"@typescript-eslint/no-floating-promises": "off",
-
-		// Not really an issue with most React projects
-		"@typescript-eslint/unbound-method": "off",
-
-		// Disabling rules which add complication when handling 3rd party "any" types
-		"@typescript-eslint/no-unsafe-assignment": "off",
-		"@typescript-eslint/no-unsafe-member-access": "off",
-		"@typescript-eslint/no-unsafe-call": "off",
-
-		"@typescript-eslint/no-non-null-assertion": "off",
-
-		// Allow use of promises where void return is expected (e.g. setTimeout(asyncFunction, 100))
-		"@typescript-eslint/no-misused-promises": [
-			"error",
-			{
-				checksVoidReturn: false,
-			},
-		],
-	},
-	settings: {
-		react: {
-			version: "detect",
+		ecmaFeatures: {
+			jsx: true,
 		},
+	},
+	plugins: ["@typescript-eslint", "react", "prettier"],
+	extends: [
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript",
+		"prettier",
+	],
+	rules: {
+		"react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }],
+		"import/extensions": "off",
+		"react/prop-types": "off",
+		"jsx-a11y/anchor-is-valid": "off",
+		"react/jsx-props-no-spreading": ["error", { custom: "ignore" }],
+		"prettier/prettier": "error",
+		"react/no-unescaped-entities": "off",
+		"import/no-cycle": [0, { ignoreExternal: true }],
+		"prefer-const": "off",
+		"react/react-in-jsx-scope": "off",
+		// needed because of https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md#how-to-use & https://stackoverflow.com/questions/63818415/react-was-used-before-it-was-defined
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": [
+			"error",
+			{ functions: false, classes: false, variables: true },
+		],
 	},
 }
