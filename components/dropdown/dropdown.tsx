@@ -5,7 +5,7 @@ import { Arrow } from "../arrow/arrow"
 import { Item } from "../../misc/mockData/interfaces"
 import { useClickAway } from "react-use"
 
-interface DropdownProps {
+export interface DropdownProps {
 	label: string
 	items: Item[]
 	/**
@@ -65,15 +65,15 @@ const Dropdown: React.FC<DropdownProps> = ({
 	}, [isOpen])
 
 	return (
-		<div className={styles["container"]}>
-			<span id='list-label' className={styles["sr-label"]}>
+		<div className={styles["container"]} data-testid='dropdown'>
+			<span id='dropdown-label' className={styles["sr-label"]}>
 				{label}
 			</span>
 			<div className={styles["wrapper"]} ref={wrapperRef}>
 				<button
 					aria-haspopup='listbox'
 					aria-expanded={isOpen}
-					aria-labelledby='list-label'
+					aria-labelledby='dropdown-label'
 					onClick={() => setIsOpen(isOpen ? false : true)}
 					ref={btnRef}
 				>
