@@ -3,22 +3,21 @@ import { Item } from "../../misc/mockData/interfaces"
 
 interface ListProps {
 	items: Item[]
-	selectedItem?: Item
-	changeSelected: (item: Item) => void
-	handleIsOpen: (isOpen: boolean) => void
+	selectedItem: Item
+	handleSelection: (item: Item) => void
+	onClose: (isOpen: boolean) => void
 	isOpen: boolean
 }
 
 const List: React.FC<ListProps> = ({
 	items,
-	changeSelected,
+	handleSelection,
 	selectedItem,
-	handleIsOpen,
+	onClose,
 	isOpen,
 }) => {
-	const getSelectedItemIndex = selectedItem
-		? items.findIndex(item => item === selectedItem)
-		: 0
+	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
+
 	const [count, setCount] = useState<number>(getSelectedItemIndex)
 	const liRefs = useRef<(HTMLLIElement | null)[]>([])
 
@@ -27,8 +26,8 @@ const List: React.FC<ListProps> = ({
 	}, [items.length])
 
 	useEffect(() => {
-		changeSelected(items[count])
-	}, [changeSelected, count, items])
+		handleSelection(items[count])
+	}, [count, items, handleSelection])
 
 	useEffect(() => {
 		if (!isOpen) {
@@ -61,7 +60,7 @@ const List: React.FC<ListProps> = ({
 				}
 
 				if (event.key === "Enter" || event.key === "Escape") {
-					handleIsOpen(false)
+					onClose(false)
 				}
 			}
 		}
@@ -73,7 +72,13 @@ const List: React.FC<ListProps> = ({
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress)
 		}
-	}, [count, items.length, isOpen, handleIsOpen])
+	}, [count, items.length, isOpen, onClose])
+
+	const onSelect = (item: Item, i: number): void => {
+		handleSelection(item)
+		onClose(false)
+		setCount(i)
+	}
 
 	const Items = (): JSX.Element => (
 		<>
@@ -85,14 +90,11 @@ const List: React.FC<ListProps> = ({
 					aria-selected={i === count ? true : false}
 					ref={element => (liRefs.current[i] = element)}
 					onClick={() => {
-						changeSelected(item)
-						handleIsOpen(false)
-						setCount(i)
+						onSelect(item, i)
 					}}
 					onKeyPress={(e: React.KeyboardEvent<HTMLLIElement>) => {
 						if (e.key === "Enter") {
-							changeSelected(item)
-							handleIsOpen(false)
+							onSelect(item, i)
 						}
 					}}
 				>

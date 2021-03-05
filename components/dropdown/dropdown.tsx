@@ -12,15 +12,16 @@ export interface DropdownProps {
 	 * Optionally set initial item
 	 */
 	selectedItem?: Item
-	changeSelected: (item: Item) => void
+	onChange: (item: Item) => void
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
 	label,
 	items,
 	selectedItem,
-	changeSelected,
+	onChange,
 }) => {
+	const [selected, setSelected] = useState<Item | undefined>(selectedItem)
 	const [isOpen, setIsOpen] = useState(false)
 	const listRef = useRef<HTMLUListElement>(null)
 	const btnRef = useRef<HTMLButtonElement>(null)
@@ -28,6 +29,11 @@ const Dropdown: React.FC<DropdownProps> = ({
 
 	const handleIsOpen = (open: boolean): void => {
 		setIsOpen(open)
+	}
+
+	const onSelect = (item: Item): void => {
+		setSelected(item)
+		onChange(item)
 	}
 
 	useClickAway(listRef, () => {
@@ -66,18 +72,18 @@ const Dropdown: React.FC<DropdownProps> = ({
 
 	return (
 		<div className={styles["container"]} data-testid='dropdown'>
-			<span id='dropdown-label' className={styles["sr-label"]}>
+			<span id='label' className={styles["sr-label"]}>
 				{label}
 			</span>
 			<div className={styles["wrapper"]} ref={wrapperRef}>
 				<button
 					aria-haspopup='listbox'
 					aria-expanded={isOpen}
-					aria-labelledby='dropdown-label'
+					aria-labelledby={`label ${selected?.name ?? items[0].name}`}
 					onClick={() => setIsOpen(isOpen ? false : true)}
 					ref={btnRef}
 				>
-					<span>{selectedItem?.name}</span>
+					<span>{selected?.name ?? items[0].name}</span>
 					<div className={styles["arrow"]}>
 						<Arrow isOpen={isOpen} />
 					</div>
@@ -92,14 +98,15 @@ const Dropdown: React.FC<DropdownProps> = ({
 					 * tabIndex will need to be manually set here such that it can be focused
 					 */
 					tabIndex={-1}
-					aria-activedescendant={selectedItem?.id}
+					aria-activedescendant={selected?.id}
 					ref={listRef}
+					aria-labelledby='label'
 				>
 					<List
 						items={items}
-						changeSelected={changeSelected}
-						selectedItem={selectedItem}
-						handleIsOpen={handleIsOpen}
+						handleSelection={onSelect}
+						selectedItem={selected ?? items[0]}
+						onClose={handleIsOpen}
 						isOpen={isOpen}
 					/>
 				</ul>

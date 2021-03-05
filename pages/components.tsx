@@ -1,15 +1,14 @@
 import Head from "next/head"
-import React, { useState } from "react"
+import React from "react"
 import { Dropdown } from "../components/dropdown/dropdown"
 import { Item } from "../misc/mockData/interfaces"
 import { items } from "../misc/mockData/mockData"
 import styles from "../styles/pages/components.module.scss"
 
 export default function Components(): JSX.Element {
-	const [, setSelected] = useState<Item>(items[3])
-
-	const handleSelected = (item: Item): void => {
-		setSelected(item)
+	const onChange = (item: Item): void => {
+		// eslint-disable-next-line no-console
+		console.log(item)
 	}
 
 	return (
@@ -23,7 +22,7 @@ export default function Components(): JSX.Element {
 				<div className={styles["dropdown"]}>
 					<Dropdown
 						items={items}
-						changeSelected={handleSelected}
+						onChange={onChange}
 						label='Dropdown Example'
 					/>
 				</div>
