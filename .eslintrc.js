@@ -68,4 +68,9 @@ module.exports = {
 		"@typescript-eslint/no-unsafe-member-access": "off",
 		"@typescript-eslint/no-unsafe-call": "off",
 	},
+	settings: {
+		react: {
+			version: "detect",
+		},
+	},
 }
