@@ -78,10 +78,10 @@ const Dropdown: React.FC<DropdownProps> = ({
 			<div className={styles["wrapper"]} ref={wrapperRef}>
 				<button
 					aria-haspopup='listbox'
-					aria-expanded={isOpen}
 					aria-labelledby={`label ${selected?.name ?? items[0].name}`}
 					onClick={() => setIsOpen(isOpen ? false : true)}
 					ref={btnRef}
+					id={selected?.name ?? items[0].name}
 				>
 					<span>{selected?.name ?? items[0].name}</span>
 					<div className={styles["arrow"]}>
@@ -93,14 +93,14 @@ const Dropdown: React.FC<DropdownProps> = ({
 						[styles["listbox"]],
 						[isOpen ? styles["hidden"] : ""],
 					].join(" ")}
-					role='listbox'
 					/**
 					 * tabIndex will need to be manually set here such that it can be focused
 					 */
 					tabIndex={-1}
+					role='listbox'
+					aria-labelledby='label'
 					aria-activedescendant={selected?.id}
 					ref={listRef}
-					aria-labelledby='label'
 				>
 					<List
 						items={items}
