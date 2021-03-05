@@ -19,6 +19,7 @@ module.exports = {
 		"plugin:import/typescript",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:jsx-a11y/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
 		"prettier",
 	],
 	plugins: [
