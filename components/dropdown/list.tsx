@@ -18,7 +18,7 @@ const List: React.FC<ListProps> = ({
 }) => {
 	const getSelectedItemIndex = items.findIndex(item => item === selectedItem)
 
-	const [count, setCount] = useState<number>(getSelectedItemIndex)
+	const [inFocus, setInFocus] = useState<number>(getSelectedItemIndex)
 	const liRefs = useRef<(HTMLLIElement | null)[]>([])
 
 	useEffect(() => {
@@ -26,37 +26,33 @@ const List: React.FC<ListProps> = ({
 	}, [items.length])
 
 	useEffect(() => {
-		handleSelection(items[count])
-	}, [count, items, handleSelection])
-
-	useEffect(() => {
 		if (!isOpen) {
 			return
 		}
 
 		const handleKeyPress = (event: KeyboardEvent): void => {
-			if (count >= 0) {
-				if (event.key === "ArrowDown" && count < items.length - 1) {
+			if (inFocus >= 0) {
+				if (event.key === "ArrowDown" && inFocus < items.length - 1) {
 					event.preventDefault()
 					if (liRefs.current) {
-						liRefs.current[count + 1]?.scrollIntoView({
+						liRefs.current[inFocus + 1]?.scrollIntoView({
 							behavior: "smooth",
 							block: "nearest",
 						})
 					}
-					setCount(count + 1)
+					setInFocus(inFocus + 1)
 				}
 
-				if (event.key === "ArrowUp" && count > 0) {
+				if (event.key === "ArrowUp" && inFocus > 0) {
 					event.preventDefault()
 
 					if (liRefs.current) {
-						liRefs.current[count - 1]?.scrollIntoView({
+						liRefs.current[inFocus - 1]?.scrollIntoView({
 							behavior: "smooth",
 							block: "nearest",
 						})
 					}
-					setCount(count - 1)
+					setInFocus(inFocus - 1)
 				}
 
 				if (event.key === "Enter" || event.key === "Escape") {
@@ -72,12 +68,12 @@ const List: React.FC<ListProps> = ({
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress)
 		}
-	}, [count, items.length, isOpen, onClose])
+	}, [inFocus, items.length, isOpen, onClose])
 
 	const onSelect = (item: Item, i: number): void => {
 		handleSelection(item)
 		onClose(false)
-		setCount(i)
+		setInFocus(i)
 	}
 
 	const Items = (): JSX.Element => (
@@ -87,7 +83,7 @@ const List: React.FC<ListProps> = ({
 					id={item.id}
 					key={i}
 					role='option'
-					aria-selected={i === count ? true : false}
+					aria-selected={i === inFocus ? true : false}
 					ref={element => (liRefs.current[i] = element)}
 					onClick={() => {
 						onSelect(item, i)

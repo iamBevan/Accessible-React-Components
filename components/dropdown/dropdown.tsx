@@ -21,7 +21,9 @@ const Dropdown: React.FC<DropdownProps> = ({
 	selectedItem,
 	onChange,
 }) => {
-	const [selected, setSelected] = useState<Item | undefined>(selectedItem)
+	const [selected, setSelected] = useState<Item | undefined>(
+		selectedItem ?? items[0]
+	)
 	const [isOpen, setIsOpen] = useState(false)
 	const listRef = useRef<HTMLUListElement>(null)
 	const btnRef = useRef<HTMLButtonElement>(null)
@@ -91,12 +93,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 				<ul
 					className={[
 						[styles["listbox"]],
-						[isOpen ? styles["hidden"] : ""],
+						[isOpen ? styles["visible"] : ""],
 					].join(" ")}
 					/**
 					 * tabIndex will need to be manually set here such that it can be focused
 					 */
-					tabIndex={-1}
+					tabIndex={isOpen ? -1 : 0}
 					role='listbox'
 					aria-labelledby='label'
 					aria-activedescendant={selected?.id}
