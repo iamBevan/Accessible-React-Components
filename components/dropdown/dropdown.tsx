@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useRef, KeyboardEvent } from "react"
 import styles from "./dropdown.module.scss"
 import { List } from "./list"
 import { Arrow } from "../arrow/arrow"
 import { Item } from "../../misc/mockData/interfaces"
 import { useClickAway } from "react-use"
+import { Key } from "../../helpers/keyCodes"
 
 export interface DropdownProps {
 	label: string
@@ -21,9 +22,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 	selectedItem,
 	onChange,
 }) => {
-	const [selected, setSelected] = useState<Item | undefined>(
-		selectedItem ?? items[0]
-	)
+	const [selected, setSelected] = useState<Item>(selectedItem ?? items[0])
 	const [isOpen, setIsOpen] = useState(false)
 	const listRef = useRef<HTMLUListElement>(null)
 	const btnRef = useRef<HTMLButtonElement>(null)
@@ -31,6 +30,13 @@ const Dropdown: React.FC<DropdownProps> = ({
 
 	const handleIsOpen = (open: boolean): void => {
 		setIsOpen(open)
+	}
+
+	const handleKeyPress = (e: KeyboardEvent<HTMLButtonElement>): void => {
+		if (e.code === Key.Enter || e.code === Key.Space) {
+			e.preventDefault()
+			setIsOpen(!isOpen)
+		}
 	}
 
 	const onSelect = (item: Item): void => {
@@ -80,12 +86,13 @@ const Dropdown: React.FC<DropdownProps> = ({
 			<div className={styles["wrapper"]} ref={wrapperRef}>
 				<button
 					aria-haspopup='listbox'
-					aria-labelledby={`label ${selected?.name ?? items[0].name}`}
-					onClick={() => setIsOpen(isOpen ? false : true)}
+					aria-labelledby={`label ${selected.name}`}
+					onClick={() => setIsOpen(!isOpen)}
 					ref={btnRef}
-					id={selected?.name ?? items[0].name}
+					id={selected.name}
+					onKeyDown={e => handleKeyPress(e)}
 				>
-					<span>{selected?.name ?? items[0].name}</span>
+					<span>{selected.name}</span>
 					<div className={styles["arrow"]}>
 						<Arrow isOpen={isOpen} />
 					</div>
@@ -101,13 +108,13 @@ const Dropdown: React.FC<DropdownProps> = ({
 					tabIndex={isOpen ? -1 : 0}
 					role='listbox'
 					aria-labelledby='label'
-					aria-activedescendant={selected?.id}
+					aria-activedescendant={selected.id}
 					ref={listRef}
 				>
 					<List
 						items={items}
 						handleSelection={onSelect}
-						selectedItem={selected ?? items[0]}
+						selectedItem={selected}
 						onClose={handleIsOpen}
 						isOpen={isOpen}
 					/>
