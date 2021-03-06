@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react"
+import { Key } from "../../helpers/keyCodes"
 import { Item } from "../../misc/mockData/interfaces"
 
 interface ListProps {
@@ -30,9 +31,12 @@ const List: React.FC<ListProps> = ({
 			return
 		}
 
-		const handleKeyPress = (event: KeyboardEvent): void => {
+		const handleArrows = (event: KeyboardEvent): void => {
 			if (inFocus >= 0) {
-				if (event.key === "ArrowDown" && inFocus < items.length - 1) {
+				if (
+					event.code === Key.ArrowDown &&
+					inFocus < items.length - 1
+				) {
 					event.preventDefault()
 					if (liRefs.current) {
 						liRefs.current[inFocus + 1]?.scrollIntoView({
@@ -41,9 +45,10 @@ const List: React.FC<ListProps> = ({
 						})
 					}
 					setInFocus(inFocus + 1)
+					handleSelection(items[inFocus + 1])
 				}
 
-				if (event.key === "ArrowUp" && inFocus > 0) {
+				if (event.code === Key.ArrowUp && inFocus > 0) {
 					event.preventDefault()
 
 					if (liRefs.current) {
@@ -53,27 +58,33 @@ const List: React.FC<ListProps> = ({
 						})
 					}
 					setInFocus(inFocus - 1)
+					handleSelection(items[inFocus - 1])
 				}
 
-				if (event.key === "Enter" || event.key === "Escape") {
+				if (event.code === Key.Enter) {
+					handleSelection(items[inFocus])
+					onClose(false)
+				}
+
+				if (event.code === Key.Escape) {
 					onClose(false)
 				}
 			}
 		}
 
 		if (isOpen) {
-			document.addEventListener("keydown", handleKeyPress)
+			document.addEventListener("keydown", handleArrows)
 		}
 
 		return () => {
-			document.removeEventListener("keydown", handleKeyPress)
+			document.removeEventListener("keydown", handleArrows)
 		}
-	}, [inFocus, items.length, isOpen, onClose])
+	}, [handleSelection, inFocus, isOpen, items, onClose])
 
 	const onSelect = (item: Item, i: number): void => {
 		handleSelection(item)
-		onClose(false)
 		setInFocus(i)
+		onClose(false)
 	}
 
 	const Items = (): JSX.Element => (
