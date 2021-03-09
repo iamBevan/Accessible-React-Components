@@ -151,4 +151,25 @@ describe("when using keyboard navigation", () => {
 		expect(list).toHaveClass("listbox visible")
 		expect(list).toHaveAttribute("tabIndex", "-1")
 	})
+
+	it("should highlight the first item", () => {
+		const listItem = component.getByRole("option", { name: "Raptor" })
+
+		expect(listItem).toHaveAttribute("aria-selected", "true")
+	})
+
+	describe("when list is open", () => {
+		beforeEach(() => {
+			const button = component.getByRole("button", {
+				name: "Cool Label Raptor",
+			})
+
+			fireEvent.keyDown(button, {
+				key: "Enter",
+				code: "Enter",
+				keyCode: 13,
+				charCode: 13,
+			})
+		})
+	})
 })
