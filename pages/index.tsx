@@ -6,14 +6,16 @@ export default function Home(): JSX.Element {
 	return (
 		<div className={styles.container}>
 			<Head>
-				<title>Create Next App</title>
+				<title>Flamingo</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
 			<main className={styles.main}>
 				<h1 className={styles["title"]}>
-					<span>Accessible </span>
-					React Components
+					Flamingo
+					<span role='img' aria-label='flamingo'>
+						🦩
+					</span>
 				</h1>
 				<div className={styles["buttons"]}>
 					<Link href='/components'>Components</Link>
