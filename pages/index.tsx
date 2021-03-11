@@ -1,15 +1,9 @@
-import Head from "next/head"
 import styles from "../styles/pages/home.module.scss"
 import Link from "next/link"
 
 export default function Home(): JSX.Element {
 	return (
 		<div className={styles.container}>
-			<Head>
-				<title>Flamingo</title>
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
-
 			<main className={styles.main}>
 				<h1 className={styles["title"]}>
 					Flamingo
@@ -17,6 +11,11 @@ export default function Home(): JSX.Element {
 						🦩
 					</span>
 				</h1>
+				<h2 className={styles["description"]}>
+					A React
+					<span> Accessibility </span>
+					Project
+				</h2>
 				<div className={styles["buttons"]}>
 					<Link href='/components'>Components</Link>
 					<Link href='/blog'>Blog</Link>

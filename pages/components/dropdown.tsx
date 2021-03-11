@@ -10,18 +10,16 @@ export default function DropdownPage(): JSX.Element {
 	}
 
 	return (
-		<>
-			<section>
-				<h2>Dropdown</h2>
-				<div className={styles["dropdown"]}>
-					<Dropdown
-						items={items}
-						onChange={onChange}
-						label='Dropdown Example'
-					/>
-				</div>
-			</section>
-		</>
+		<main className={styles["main"]}>
+			<h2>Dropdown</h2>
+			<div className={styles["dropdown"]}>
+				<Dropdown
+					items={items}
+					onChange={onChange}
+					label='Dropdown Example'
+				/>
+			</div>
+		</main>
 	)
 }
 
