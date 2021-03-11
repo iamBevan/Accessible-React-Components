@@ -1,5 +1,6 @@
 import Head from "next/head"
 import styles from "../styles/pages/home.module.scss"
+import Link from "next/link"
 
 export default function Home(): JSX.Element {
 	return (
@@ -15,8 +16,8 @@ export default function Home(): JSX.Element {
 					React Components
 				</h1>
 				<div className={styles["buttons"]}>
-					<a href='/components'>Components</a>
-					<a href='/blog'>Blog</a>
+					<Link href='/components'>Components</Link>
+					<Link href='/blog'>Blog</Link>
 				</div>
 			</main>
 

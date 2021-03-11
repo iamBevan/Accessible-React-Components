@@ -30,3 +30,11 @@ export default function Components(): JSX.Element {
 		</div>
 	)
 }
+
+export function getStaticProps(): { props: { layout: string } } {
+	return {
+		props: {
+			layout: "components",
+		},
+	}
+}
