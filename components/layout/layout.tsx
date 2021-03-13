@@ -9,7 +9,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
-	const isWide = useMedia("(min-width: 600px)")
+	const isWide = useMedia("(min-width: 800px)")
 
 	return (
 		<>
