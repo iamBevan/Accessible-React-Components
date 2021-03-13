@@ -1,12 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import Link from "next/link"
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
+import { ThreeBars } from "../icons"
+import SvgCloseIcon from "../icons/icons/CloseIcon"
 import styles from "./sidebar.module.scss"
+import { useClickAway } from "react-use"
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Sidebar = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+	const sidebarRef = useRef<HTMLDivElement>(null)
 
 	// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 	const handleToggle = (
@@ -16,6 +21,10 @@ const Sidebar = () => {
 		setIsSidebarOpen(!isSidebarOpen)
 	}
 
+	useClickAway(sidebarRef, () => {
+		setIsSidebarOpen(false)
+	})
+
 	return (
 		<>
 			<div
@@ -23,6 +32,7 @@ const Sidebar = () => {
 					[styles["sidebar-component"]],
 					[isSidebarOpen ? styles["sidebar-component-open"] : ""],
 				].join(" ")}
+				ref={sidebarRef}
 			>
 				<div className={styles["heading"]}>
 					<h1>
@@ -31,6 +41,13 @@ const Sidebar = () => {
 					<span role='img' aria-label='flamingo'>
 						🦩
 					</span>
+					<button
+						onClick={() => setIsSidebarOpen(false)}
+						className={styles["close-btn"]}
+						aria-expanded={isSidebarOpen}
+					>
+						<SvgCloseIcon size={35} color={"#393737"} />
+					</button>
 				</div>
 				<nav className={styles["nav"]}>
 					<ul>
@@ -44,13 +61,11 @@ const Sidebar = () => {
 				</nav>
 			</div>
 			<button
-				className={[
-					[styles["sidebar-btn"]],
-					[isSidebarOpen ? styles["sidebar-btn-open"] : ""],
-				].join(" ")}
+				className={styles["sidebar-btn"]}
 				onClick={e => handleToggle(e)}
+				aria-expanded={isSidebarOpen}
 			>
-				{isSidebarOpen ? "Close" : "Open"}
+				<ThreeBars size={40} color={"#393737"} />
 			</button>
 		</>
 	)
