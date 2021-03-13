@@ -1,9 +1,11 @@
 .sidebar-component {
 	position: absolute; top: 0; left: 0;
-	background-color: violet;
 	width: 50%;	height: 100%;
 	transform: translateX(-100%);
-	transition: all .50s ease-in-out;
+	transition: all .25s ease-in;
+	background-color: var(--flamingo-pink);
+	z-index: 1;
+
 
 	&-open {
 		transform: translateX(0);
@@ -15,53 +17,93 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		position: relative;
+		margin: 1rem 0 0 0;
+
 
 		h1 {
 
 			a {
-				font-size: 1rem;
+				font-size: 1.5rem;
 
 			}
 		}
 
 		span {
 			font-size: 2rem;
+
 			
+		}
+
+		.close-btn {
+			position: absolute;
+			top: -1rem;
+			right: 0;
+		}
+
+		.close-btn {
+			border: none;
+			outline: none;
+			background: none;
 		}
 
 	}
 
 	.nav {
 		width:100%;
+
 		
 
 			ul{
-				margin:0; padding:0;
+				margin:0 .2rem; padding:0;
 				list-style:none;
 				width: 100%;
 
 				li{
-					font-weight:900;color: white;
+					color: #393737; font-size: 1rem; font-weight: 700;
 					width: 100%;
-					background-color: rgb(170, 62, 170); 
 					margin:1rem 0;
 					position: relative;
+
+					&:hover {
+						a {
+							transform: translateX(.5rem);
+						}
+					}
+
+					
+					&:before {
+						content: " ";
+						width: 0;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						background-color: pink;				
+						transition: all .25s ease;
+
+
+					}
+					
+					&:hover::before{
+						width: 100%;
+
+					}
 
 					a {
 
 						width: 100%;
-						transition: all .5s ease-in-out;
-
-
-					
-					}
+						transition: all .25s ease-in-out;
+						position: relative;
+						display: inline-block;
 
 
 
-					
 
 
 					
+					}	
+								
 					
 				}
 			}
@@ -71,13 +113,29 @@
 .sidebar-btn {
 
 	position: absolute;
-	top: 0;
+	top: 1rem;
 	left: 0;
-	transition: all .50s ease-in-out;
+	transition: all .25s ease-in;
+	border: none;
+	outline: none;
+	background-color: var(--flamingo-pink);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 
-	&-open {
-		left: 50%;
-		background-color: red;
+	
+
+	&[aria-expanded="true"] {
+		z-index: 0;
+		transform: translateX(-4rem);
+	}
+
+	&[aria-expanded="false"] {
+		z-index: 0;
+		transform: translateX(0);
+		transition-delay: 0.5s;
 	}
 
 
