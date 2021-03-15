@@ -3,7 +3,6 @@
 import Link from "next/link"
 import React, { useState, useRef } from "react"
 import { ThreeBars } from "../icons"
-import SvgCloseIcon from "../icons/icons/CloseIcon"
 import styles from "./sidebar.module.scss"
 import { useClickAway } from "react-use"
 
@@ -33,6 +32,7 @@ const Sidebar = () => {
 					[isSidebarOpen ? styles["sidebar-component-open"] : ""],
 				].join(" ")}
 				ref={sidebarRef}
+				aria-label='sidebar'
 			>
 				<div className={styles["heading"]}>
 					<h1>
@@ -41,31 +41,116 @@ const Sidebar = () => {
 					<span role='img' aria-label='flamingo'>
 						🦩
 					</span>
-					<button
+					{/* <button
 						onClick={() => setIsSidebarOpen(false)}
 						className={styles["close-btn"]}
 						aria-expanded={isSidebarOpen}
 					>
-						<SvgCloseIcon size={35} color={"#393737"} />
-					</button>
+						<SvgCloseIcon size={25} color={"#393737"} />
+					</button> */}
 				</div>
-				<nav className={styles["nav"]}>
-					<ul>
-						<li>
-							<Link href='/components/dropdown'>Dropdown</Link>
-						</li>
-						<li>
-							<Link href='/components/modal'>Modal</Link>
-						</li>
-					</ul>
-				</nav>
+				<div className={styles["nav-container"]}>
+					<h2>Components</h2>
+					<nav className={styles["nav"]}>
+						<ul>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/dropdown'
+								>
+									Dropdown
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+							<li>
+								<Link
+									aria-label='menuitem'
+									href='/components/modal'
+								>
+									Modal
+								</Link>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
 			<button
 				className={styles["sidebar-btn"]}
 				onClick={e => handleToggle(e)}
 				aria-expanded={isSidebarOpen}
 			>
-				<ThreeBars size={40} color={"#393737"} />
+				<ThreeBars size={15} color={"#393737"} />
 			</button>
 		</>
 	)
