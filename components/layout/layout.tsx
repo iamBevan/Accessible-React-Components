@@ -27,7 +27,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 							<Link href='/components/checkbox'>Checkbox</Link>
 						</li>
 						<li>
-							<Link href='/components/checkbox'>Switch</Link>
+							<Link href='/components/switch'>Switch</Link>
 						</li>
 						<li>
 							<Link href='/components/slider'>Slider</Link>

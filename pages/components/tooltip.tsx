@@ -1,9 +1,9 @@
 import styles from "../../styles/pages/components.module.scss"
 
-export default function Modal(): JSX.Element {
+export default function Tooltip(): JSX.Element {
 	return (
 		<main className={styles["main"]}>
-			<h1>Modal</h1>
+			<h1>Tooltip</h1>
 		</main>
 	)
 }
