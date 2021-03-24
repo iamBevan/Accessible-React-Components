@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import Link from "next/link"
-import React, { useState, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { ThreeBars } from "../icons"
 import styles from "./sidebar.module.scss"
 import { useClickAway } from "react-use"
@@ -23,6 +23,37 @@ const Sidebar = () => {
 	useClickAway(sidebarRef, () => {
 		setIsSidebarOpen(false)
 	})
+
+	useEffect(() => {
+		let focusableElements = document.querySelectorAll<HTMLAnchorElement>(
+			"a[href]"
+		)
+		let firstTabStop = focusableElements[0]
+		let lastTabStop = focusableElements[focusableElements.length - 1]
+
+		if (isSidebarOpen) {
+			focusableElements: Array.prototype.slice.call([focusableElements])
+			firstTabStop.focus()
+
+			const handleTabKey = (event: KeyboardEvent) => {
+				if (event.key === "ArrowLeft") {
+					if (event.shiftKey) {
+						if (document.activeElement === firstTabStop) {
+							event.preventDefault()
+							lastTabStop.focus()
+						}
+					} else {
+						if (document.activeElement === lastTabStop) {
+							event.preventDefault()
+							firstTabStop.focus()
+						}
+					}
+				}
+			}
+
+			document.addEventListener("keydown", handleTabKey)
+		}
+	}, [isSidebarOpen])
 
 	return (
 		<>
@@ -138,7 +169,7 @@ const Sidebar = () => {
 									aria-label='menuitem'
 									href='/components/modal'
 								>
-									Modal
+									Last List Item
 								</Link>
 							</li>
 						</ul>
