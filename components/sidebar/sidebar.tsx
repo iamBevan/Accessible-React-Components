@@ -81,95 +81,44 @@ const Sidebar = () => {
 					</button> */}
 				</div>
 				<div className={styles["nav-container"]}>
-					<h2>Components</h2>
 					<nav className={styles["nav"]}>
 						<ul>
 							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/dropdown'
-								>
+								<Link href='/components/button'>Button</Link>
+							</li>
+							<li>
+								<Link href='/components/checkbox'>
+									Checkbox
+								</Link>
+							</li>
+							<li>
+								<Link href='/components/checkbox'>Switch</Link>
+							</li>
+							<li>
+								<Link href='/components/slider'>Slider</Link>
+							</li>
+							<li>
+								<Link href='/components/dropdown'>
 									Dropdown
 								</Link>
 							</li>
 							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
+								<Link href='/components/accordion'>
+									Accordion
 								</Link>
 							</li>
 							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
+								<Link href='/components/modal'>Modal</Link>
 							</li>
 							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
+								<Link href='/components/tooltip'>Tooltip</Link>
 							</li>
 							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
+								<Link href='/components/tabs'>Tabs</Link>
 							</li>
 							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
-							</li>
-							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
-							</li>
-							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
-							</li>
-							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
-							</li>
-							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Modal
-								</Link>
-							</li>
-							<li>
-								<Link
-									aria-label='menuitem'
-									href='/components/modal'
-								>
-									Last List Item
+								<Link href='/components/datetimepicker'>
+									Date/Time Picker
 								</Link>
 							</li>
 						</ul>
