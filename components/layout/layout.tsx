@@ -39,7 +39,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 							<Link href='/components/accordion'>Accordion</Link>
 						</li>
 						<li>
-							<Link href='/components/modal'>Modal</Link>
+							<Link href='/components/modal'>Dialog (Modal)</Link>
 						</li>
 						<li>
 							<Link href='/components/tooltip'>Tooltip</Link>
