@@ -6,11 +6,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ text }) => {
-	return (
-		<div className={styles["container"]}>
-			<button>{text}</button>
-		</div>
-	)
+	return <button className={styles["button"]}>{text}</button>
 }
 
 export { Button }

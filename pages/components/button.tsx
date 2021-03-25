@@ -1,7 +1,8 @@
 import { Button as ButtonComponent } from "../../components/button/button"
-import { atomOneDark, CopyBlock } from "react-code-blocks"
+import { atomOneDark, CodeBlock } from "react-code-blocks"
 import styles from "../../styles/pages/components.module.scss"
 import { codeSnippets } from "../../misc"
+import { ComponentWrapper } from "../../components/component-wrapper/component-wrapper"
 
 export default function Button(): JSX.Element {
 	return (
@@ -20,7 +21,7 @@ export default function Button(): JSX.Element {
 				</a>
 			</p>
 			<h2>Installation</h2>
-			<CopyBlock
+			<CodeBlock
 				text='npm i flamingo/Button'
 				theme={atomOneDark}
 				language='text'
@@ -29,14 +30,17 @@ export default function Button(): JSX.Element {
 				codeBlock
 			/>
 			<h2>Usage</h2>
-			<CopyBlock
+			<ComponentWrapper>
+				<ButtonComponent text='Button' />
+			</ComponentWrapper>
+			<CodeBlock
 				text={codeSnippets.Button}
 				theme={atomOneDark}
 				language='jsx'
 				showLineNumbers={false}
 				wrapLines={true}
+				codeBlock={true}
 			/>
-			<ButtonComponent text='Button' />
 			<h2>Accessibility</h2>
 			<h2>Props</h2>
 		</main>
