@@ -1,3 +1,4 @@
+import { CodeBlock, nord } from "react-code-blocks"
 import styles from "../../styles/pages/components.module.scss"
 
 export default function Button(): JSX.Element {
@@ -11,7 +12,14 @@ export default function Button(): JSX.Element {
 				lectus urna duis.
 			</p>
 			<h2>Installation</h2>
-			<code>npm install flamingo/button</code>
+			<CodeBlock
+				text='npm i flamingo/button'
+				theme={nord}
+				language='text'
+				showLineNumbers={false}
+				wrapLines={true}
+				codeBlock
+			/>
 			<h2>Usage</h2>
 			<h2>Accessibility</h2>
 			<h2>Props</h2>

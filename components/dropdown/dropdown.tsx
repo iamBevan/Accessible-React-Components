@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, KeyboardEvent } from "react"
 import styles from "./dropdown.module.scss"
 import { List } from "./list"
 import { Arrow } from "../arrow/arrow"
-import { Item } from "../../misc/mockData/interfaces"
+import { Item } from "../../misc/interfaces"
 import { useClickAway } from "react-use"
 import { Key } from "../../helpers/keyCodes"
 
