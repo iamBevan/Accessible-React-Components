@@ -27,12 +27,50 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 						<nav className={styles["nav"]}>
 							<ul>
 								<li>
+									<Link href='/components/button'>
+										Button
+									</Link>
+								</li>
+								<li>
+									<Link href='/components/checkbox'>
+										Checkbox
+									</Link>
+								</li>
+								<li>
+									<Link href='/components/checkbox'>
+										Switch
+									</Link>
+								</li>
+								<li>
+									<Link href='/components/slider'>
+										Slider
+									</Link>
+								</li>
+								<li>
 									<Link href='/components/dropdown'>
 										Dropdown
 									</Link>
 								</li>
 								<li>
+									<Link href='/components/accordion'>
+										Accordion
+									</Link>
+								</li>
+								<li>
 									<Link href='/components/modal'>Modal</Link>
+								</li>
+								<li>
+									<Link href='/components/tooltip'>
+										Tooltip
+									</Link>
+								</li>
+								<li>
+									<Link href='/components/tabs'>Tabs</Link>
+								</li>
+								<li>
+									<Link href='/components/datetimepicker'>
+										Date/Time Picker
+									</Link>
 								</li>
 							</ul>
 						</nav>

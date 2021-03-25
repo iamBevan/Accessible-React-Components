@@ -2,7 +2,7 @@
 	position: absolute; top: 0; left: 0;
 	height: 100%;
 	transform: translateX(-100%);
-	transition: all .25s ease-in;
+	transition: transform .15s ease;
 	z-index: 1;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -143,7 +143,7 @@
 	position: absolute;
 	top: 1rem;
 	left: 1rem;
-	transition: transform .15s ease-in;
+	transition: transform .15s ease;
 	border: none;
 	outline: none;
 	display: flex;
@@ -155,10 +155,7 @@
 	background: none;
 
 
-	&:hover {
-		background-color: pink;
-	}
-	
+
 
 	
 
