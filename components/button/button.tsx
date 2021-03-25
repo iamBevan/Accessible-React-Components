@@ -2,13 +2,13 @@ import React from "react"
 import styles from "./button.module.scss"
 
 interface ButtonProps {
-	isOpen: boolean
+	text: string
 }
 
-const Button: React.FC<ButtonProps> = () => {
+const Button: React.FC<ButtonProps> = ({ text }) => {
 	return (
 		<div className={styles["container"]}>
-			<button>Button</button>
+			<button>{text}</button>
 		</div>
 	)
 }
