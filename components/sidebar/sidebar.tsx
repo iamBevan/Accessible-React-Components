@@ -51,7 +51,14 @@ const Sidebar = () => {
 				}
 			}
 
+			const handleEscapeKey = (event: KeyboardEvent) => {
+				if (event.key === "Escape") {
+					setIsSidebarOpen(!isSidebarOpen)
+				}
+			}
+
 			document.addEventListener("keydown", handleTabKey)
+			document.addEventListener("keydown", handleEscapeKey)
 		}
 	}, [isSidebarOpen])
 
@@ -72,13 +79,6 @@ const Sidebar = () => {
 					<span role='img' aria-label='flamingo'>
 						🦩
 					</span>
-					{/* <button
-						onClick={() => setIsSidebarOpen(false)}
-						className={styles["close-btn"]}
-						aria-expanded={isSidebarOpen}
-					>
-						<SvgCloseIcon size={25} color={"#393737"} />
-					</button> */}
 				</div>
 				<div className={styles["nav-container"]}>
 					<nav className={styles["nav"]}>
