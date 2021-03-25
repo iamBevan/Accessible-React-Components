@@ -36,7 +36,7 @@ const Sidebar = () => {
 			firstTabStop.focus()
 
 			const handleTabKey = (event: KeyboardEvent) => {
-				if (event.key === "ArrowLeft") {
+				if (event.key === "Tab") {
 					if (event.shiftKey) {
 						if (document.activeElement === firstTabStop) {
 							event.preventDefault()
