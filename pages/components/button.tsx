@@ -21,7 +21,11 @@ export default function Button(): JSX.Element {
 				</a>
 			</p>
 			<h2>Installation</h2>
-			<SyntaxHighlighter language='javascript' style={codeStyle}>
+			<SyntaxHighlighter
+				language='javascript'
+				style={codeStyle}
+				codeTagProps={{ style: { fontSize: 16, lineHeight: 1.4 } }}
+			>
 				npm i flamingo/Button
 			</SyntaxHighlighter>
 			<h2>Usage</h2>
