@@ -1,22 +1,18 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import Link from "next/link"
 import React, { useState, useEffect, useRef } from "react"
 import { ThreeBars } from "../icons"
 import styles from "./sidebar.module.scss"
 import { useClickAway } from "react-use"
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
 	const sidebarRef = useRef<HTMLDivElement>(null)
 
-	// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 	const handleToggle = (
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		_e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-	) => {
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	): void => {
+		e.preventDefault()
 		setIsSidebarOpen(!isSidebarOpen)
 	}
 
@@ -35,7 +31,7 @@ const Sidebar = () => {
 			focusableElements: Array.prototype.slice.call([focusableElements])
 			firstTabStop.focus()
 
-			const handleTabKey = (event: KeyboardEvent) => {
+			const handleTabKey = (event: KeyboardEvent): void => {
 				if (event.key === "Tab") {
 					if (event.shiftKey) {
 						if (document.activeElement === firstTabStop) {
@@ -51,7 +47,7 @@ const Sidebar = () => {
 				}
 			}
 
-			const handleEscapeKey = (event: KeyboardEvent) => {
+			const handleEscapeKey = (event: KeyboardEvent): void => {
 				if (event.key === "Escape") {
 					setIsSidebarOpen(!isSidebarOpen)
 				}
