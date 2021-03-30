@@ -1,8 +1,8 @@
 import { Button as ButtonComponent } from "../../components/button/button"
 import styles from "../../styles/pages/components.module.scss"
-import { codeSnippets, codeStyle } from "../../misc"
-import SyntaxHighlighter from "react-syntax-highlighter"
+import { codeSnippets } from "../../misc"
 import { ComponentWrapper } from "../../components/component-wrapper/component-wrapper"
+import { Code } from "../../components/code/code"
 
 export default function Button(): JSX.Element {
 	return (
@@ -21,24 +21,12 @@ export default function Button(): JSX.Element {
 				</a>
 			</p>
 			<h2>Installation</h2>
-			<SyntaxHighlighter
-				language='javascript'
-				style={codeStyle}
-				codeTagProps={{ style: { fontSize: 16, lineHeight: 1.4 } }}
-			>
-				npm i flamingo/Button
-			</SyntaxHighlighter>
+			<Code snippet={codeSnippets.ButtonInstall} />
 			<h2>Usage</h2>
 			<ComponentWrapper>
 				<ButtonComponent text='Button' />
 			</ComponentWrapper>
-			<SyntaxHighlighter
-				language='javascript'
-				style={codeStyle}
-				codeTagProps={{ style: { fontSize: 16, lineHeight: 1.4 } }}
-			>
-				{codeSnippets.Button}
-			</SyntaxHighlighter>
+			<Code snippet={codeSnippets.Button} />
 			<h2>Accessibility</h2>
 			<p>
 				A{" "}
