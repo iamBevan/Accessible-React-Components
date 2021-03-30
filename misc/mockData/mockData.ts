@@ -1,4 +1,4 @@
-import { Item } from "./interfaces"
+import { Item } from "../interfaces"
 
 export const items: Item[] = [
 	{ name: "Raptor", id: "raptor" },

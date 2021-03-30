@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { Key } from "../../helpers/keyCodes"
-import { Item } from "../../misc/mockData/interfaces"
+import { Item } from "../../misc/interfaces"
 
 interface ListProps {
 	items: Item[]

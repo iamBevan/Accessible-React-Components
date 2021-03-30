@@ -1,0 +1,17 @@
+.button{
+	position:relative;
+	display:inline-block; padding:0.5rem 1rem; margin:0;
+	font-size:1rem; line-height:1rem; white-space:nowrap; vertical-align:top; color:#fff;
+	background:var(--focus); border:2px solid var(--focus); border-radius:3px; opacity:1;
+	transition:all 0.15s;
+
+	&:focus{
+		outline:0;
+		box-shadow:0 0 0 4px var(--focus-shadow)
+	}
+
+	&:hover{
+		transition:all 0.15s;
+		opacity:0.8;
+	}
+}

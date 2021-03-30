@@ -1,5 +1,5 @@
 import { Dropdown } from "../../components/dropdown/dropdown"
-import { Item } from "../../misc/mockData/interfaces"
+import { Item } from "../../misc/interfaces"
 import { items } from "../../misc/mockData/mockData"
 import styles from "../../styles/pages/components.module.scss"
 

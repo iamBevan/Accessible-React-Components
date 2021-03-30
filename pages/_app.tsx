@@ -2,7 +2,6 @@ import { Fragment } from "react"
 import { Layout } from "../components/layout/layout"
 import { AppProps } from "next/app"
 import "../styles/globals.scss"
-import "normalize.css"
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 	const Container = pageProps.layout === "components" ? Layout : Fragment

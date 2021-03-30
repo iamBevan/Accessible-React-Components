@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap');
 
 #__next{
 	height:100%;
 }
 
 :root{
-	--focus:#db0a5b;
-	--focus-shadow:#db0a5a17;
+	--focus:#E60058;
+	--focus-shadow:#db0a5a57;
 
 	--font-family:'Montserrat', sans-serif;
 
@@ -20,7 +20,7 @@ html, body{
 	padding:0; margin:0;
 	font-family:var(--font-family);
 	color:var(--primary-dark);
-	height:100vh;
+	min-height:100vh;
 }
 
 a{
@@ -30,4 +30,38 @@ a{
 
 *{
 	box-sizing:border-box;
+}
+
+h1{
+	font-weight:700;
+}
+
+p, li{
+	line-height:1.5rem;
+	font-size:1rem;
+	font-weight:400;
+}
+
+strong{
+	font-size:1.05rem;
+}
+
+ul{
+	list-style:none;
+}
+
+pre{ margin:0.25rem 0; }
+
+.code{
+	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	background-color:rgba(33, 33, 33, 0.05);
+	border-radius:3px; border:1px solid rgba(128, 128, 128, 0.322);
+	font-size:0.875em;
+	padding:0.2em 0.4em;
+}
+
+kbd{
+	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	font-size:1.125rem;
+	padding:0.2em 0.4em;
 }
