@@ -1,9 +1,11 @@
+import { Checkbox } from "../../components/checkbox/checkbox"
+import { checkboxItems } from "../../misc/mockData/mockData"
 import styles from "../../styles/pages/components.module.scss"
 
-export default function Checkbox(): JSX.Element {
+export default function CheckboxPage(): JSX.Element {
 	return (
 		<main className={styles["main"]}>
-			<h1>Checkbox</h1>
+			<Checkbox items={checkboxItems} legend='Weapons' />
 		</main>
 	)
 }
