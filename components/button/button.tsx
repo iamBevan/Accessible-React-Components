@@ -1,4 +1,4 @@
-import React from "react"
+import React, { CSSProperties } from "react"
 import styles from "./button.module.scss"
 
 interface ButtonProps {
@@ -21,6 +21,10 @@ interface ButtonProps {
 	 * it can also be provided with an aria-label.
 	 */
 	ariaLabel?: string
+	/**
+	 * Option for providing custom styling object.
+	 */
+	customStyles?: CSSProperties
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
 	disabled,
 	ariaLabel,
 	ariaDisabled,
+	customStyles,
 }) => {
 	return (
 		<>
@@ -36,6 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 				aria-label={ariaLabel ?? undefined}
 				aria-disabled={ariaDisabled ?? false}
 				disabled={disabled ?? false}
+				style={customStyles}
 			>
 				{text}
 			</button>
