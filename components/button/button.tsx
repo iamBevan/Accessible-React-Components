@@ -23,13 +23,18 @@ interface ButtonProps {
 	ariaLabel?: string
 }
 
-const Button: React.FC<ButtonProps> = ({ text, disabled, ariaLabel }) => {
+const Button: React.FC<ButtonProps> = ({
+	text,
+	disabled,
+	ariaLabel,
+	ariaDisabled,
+}) => {
 	return (
 		<>
 			<button
 				className={styles["button"]}
 				aria-label={ariaLabel ?? undefined}
-				aria-disabled={disabled ?? false}
+				aria-disabled={ariaDisabled ?? false}
 				disabled={disabled ?? false}
 			>
 				{text}
