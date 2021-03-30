@@ -126,7 +126,7 @@ const Sidebar: React.FC = () => {
 				onClick={e => handleToggle(e)}
 				aria-expanded={isSidebarOpen}
 			>
-				<ThreeBars size={15} color={"#393737"} />
+				<ThreeBars size={16} color={"#393737"} />
 			</button>
 		</>
 	)
