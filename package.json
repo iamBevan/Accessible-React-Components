@@ -10,6 +10,8 @@
 		"generate-icons": "npx @svgr/cli -d components/icons/icons components/icons/svg --ext=tsx"
 	},
 	"dependencies": {
+		"@mdx-js/loader": "^1.6.22",
+		"@next/mdx": "^10.1.2",
 		"@typescript-eslint/parser": "^4.15.2",
 		"next": "10.0.7",
 		"react": "17.0.1",
