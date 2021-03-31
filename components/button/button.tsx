@@ -12,15 +12,15 @@ interface ButtonProps {
 	 */
 	ariaDisabled?: boolean
 	/**
-	 * When set to true, it specifies that the button should be disabled - button can not receive focus.
-	 */
-	disabled?: boolean
-	/**
 	 * The button has an accessible label. By default, the accessible name
 	 * is computed from any text content inside the button element. However,
 	 * it can also be provided with an aria-label.
 	 */
 	ariaLabel?: string
+	/**
+	 * When set to true, it specifies that the button should be disabled - button can not receive focus.
+	 */
+	disabled?: boolean
 	/**
 	 * Option for providing custom styling object.
 	 */

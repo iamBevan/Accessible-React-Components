@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .main{
 	margin:auto;
 	max-width:850px;
@@ -55,4 +57,17 @@
 	}
 
 	abbr{ color:var(--focus); }
+
+	.props{
+		li{
+			code:first-child{
+				margin:0 8px 0 0;
+				font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+			}
+			code:last-child{
+				color:var(--focus);
+				font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+			}
+		}
+	}
 }

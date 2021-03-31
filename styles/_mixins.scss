@@ -1,0 +1,28 @@
+@mixin code-standard{
+	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	background-color:rgba(33, 33, 33, 0.05);
+	border-radius:3px;
+	font-size:0.875em;
+	padding:0.2em 0.4em;
+}
+@mixin code-component{
+	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	background-color:rgba(33, 33, 33, 0.05);
+	border-radius:3px;
+	font-size:0.875em;
+	padding:0.2em 0.4em;
+}
+@mixin code-prop{
+	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	background-color:rgba(33, 33, 33, 0.05);
+	border-radius:3px;
+	font-size:0.875em;
+	padding:0.2em 0.4em;
+}
+@mixin code-prop-type{
+	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	background-color:rgba(33, 33, 33, 0.05);
+	border-radius:3px;
+	font-size:0.875em;
+	padding:0.2em 0.4em;
+}
