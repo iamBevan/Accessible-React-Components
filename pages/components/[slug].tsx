@@ -1,5 +1,6 @@
 import { GetStaticPathsResult, GetStaticPropsResult } from "next"
 import dynamic from "next/dynamic"
+import { Fragment } from "react"
 import { getPageBySlug, getAllPages } from "../../lib/pages"
 
 interface PageProps {
@@ -18,7 +19,9 @@ interface StaticPropsResult {
 }
 
 export default function Page({ slug }: PageProps): JSX.Element {
-	const MDXContent = dynamic(() => import(`../../docs/${slug ?? "dog"}.mdx`))
+	const MDXContent = slug
+		? dynamic(() => import(`../../mdx/components/${slug}.mdx`))
+		: Fragment
 
 	return <MDXContent />
 }
@@ -33,7 +36,7 @@ export function getStaticProps({
 			slug: page.slug,
 			content: page.content,
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
-			meta: require(`../../docs/${page.slug}.mdx`).meta ?? null,
+			meta: require(`../../mdx/components/${page.slug}.mdx`).meta ?? null,
 		},
 	}
 }

@@ -14,11 +14,11 @@ interface PageBySlug {
 	content: string
 }
 
-const docsDirectory = join(process.cwd(), "docs")
+const pagesDirectory = join(process.cwd(), "mdx/components")
 
 export function getPageBySlug(slug: string): PageBySlug {
 	const realSlug: string = slug.replace(/\.mdx$/, "")
-	const fullPath = join(docsDirectory, `${realSlug}.mdx`)
+	const fullPath = join(pagesDirectory, `${realSlug}.mdx`)
 	const fileContents = fs.readFileSync(fullPath, "utf8")
 	const { data, content } = matter(fileContents)
 
@@ -26,8 +26,8 @@ export function getPageBySlug(slug: string): PageBySlug {
 }
 
 export function getAllPages(): AllPages[] {
-	const slugs = fs.readdirSync(docsDirectory)
-	const docs = slugs.map(slug => getPageBySlug(slug))
+	const slugs = fs.readdirSync(pagesDirectory)
+	const pages = slugs.map(slug => getPageBySlug(slug))
 
-	return docs
+	return pages
 }
