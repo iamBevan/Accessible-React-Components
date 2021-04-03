@@ -33,7 +33,7 @@ export function getStaticProps({
 			slug: page.slug,
 			content: page.content,
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
-			meta: require(`../../docs/${page.slug}.mdx`).meta,
+			meta: require(`../../docs/${page.slug}.mdx`).meta ?? null,
 		},
 	}
 }
