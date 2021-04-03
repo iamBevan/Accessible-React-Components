@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import { getPageBySlug, getAllPages } from "../../lib/pages"
 
 interface PageProps {
-	slug: string
+	slug: string | undefined
 }
 
 interface StaticProps {
@@ -18,7 +18,7 @@ interface StaticPropsResult {
 }
 
 export default function Page({ slug }: PageProps): JSX.Element {
-	const MDXContent = dynamic(() => import(`../../docs/${slug}.mdx`))
+	const MDXContent = dynamic(() => import(`../../docs/${slug ?? "dog"}.mdx`))
 
 	return <MDXContent />
 }
