@@ -12,6 +12,7 @@ interface PageBySlug {
 	slug: string
 	meta: { [key: string]: string }
 	content: string
+	layout: string
 }
 
 const pagesDirectory = join(process.cwd(), "mdx/components")
@@ -22,7 +23,7 @@ export function getPageBySlug(slug: string): PageBySlug {
 	const fileContents = fs.readFileSync(fullPath, "utf8")
 	const { data, content } = matter(fileContents)
 
-	return { slug: realSlug, meta: data, content }
+	return { slug: realSlug, meta: data, content, layout: "components" }
 }
 
 export function getAllPages(): AllPages[] {

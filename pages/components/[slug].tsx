@@ -16,6 +16,7 @@ interface StaticPropsResult {
 	slug: string
 	content: string
 	meta: { [key: string]: string }
+	layout: string
 }
 
 export default function Page({ slug }: PageProps): JSX.Element {
@@ -37,6 +38,7 @@ export function getStaticProps({
 			content: page.content,
 			// eslint-disable-next-line @typescript-eslint/no-var-requires
 			meta: require(`../../mdx/components/${page.slug}.mdx`).meta ?? null,
+			layout: page.layout,
 		},
 	}
 }
