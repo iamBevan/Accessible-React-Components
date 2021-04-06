@@ -56,7 +56,7 @@ When the button has focus:
 
 -   <Kbd text="Space" /> or <Kbd text="Enter" />: Activates the button.
     <ComponentWrapper>
-	    <ButtonComponent text='Button' />
+	    <ButtonComponent text='Button' onClick={() => alert("Button pressed")}/>
     </ComponentWrapper>
 
 -   Following button activation, focus is set depending on the type of action the button performs. For example:

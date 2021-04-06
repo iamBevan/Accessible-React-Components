@@ -25,6 +25,10 @@ interface ButtonProps {
 	 * Option for providing custom styling object.
 	 */
 	customStyles?: CSSProperties
+	/**
+	 * Option to pass a callback function to be called upon by button being pressed.
+	 */
+	onClick?: () => void
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -33,6 +37,7 @@ const Button: React.FC<ButtonProps> = ({
 	ariaLabel,
 	ariaDisabled,
 	customStyles,
+	onClick,
 }) => {
 	return (
 		<>
@@ -42,6 +47,7 @@ const Button: React.FC<ButtonProps> = ({
 				aria-disabled={ariaDisabled ?? false}
 				disabled={disabled ?? false}
 				style={customStyles}
+				onClick={onClick}
 			>
 				{text}
 			</button>
