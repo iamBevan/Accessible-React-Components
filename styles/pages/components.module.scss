@@ -8,22 +8,6 @@
 		margin-top:50px;
 	}
 
-	a{
-		color:var(--focus);
-		text-decoration:none; font-weight:500;
-		padding:2px 2px; margin:-2px -2px;
-
-		&:hover{
-			text-decoration:underline;
-		}
-
-		&:focus{
-			box-shadow:0 0 0 4px var(--focus-shadow);
-			outline:none;
-			text-decoration:none;
-		}
-	}
-
 	> ul{
 		position:relative;
 		list-style:none; list-style-position:inside;
@@ -52,19 +36,6 @@
 				margin:4px 0 0 -1.25rem;
 				left:-22;
 				border-left:2px solid var(--focus);
-			}
-		}
-	}
-
-	.props{
-		li{
-			code:first-child{
-				margin:0 8px 0 0;
-				font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-			}
-			code:last-child{
-				color:var(--focus);
-				font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 			}
 		}
 	}
