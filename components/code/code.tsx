@@ -1,22 +1,33 @@
 import React, { ReactNode } from "react"
-// import styles from "./code.module.scss"
+import styles from "./code.module.scss"
 import SyntaxHighlighter from "react-syntax-highlighter"
 import { codeStyle } from "../../misc"
 
 interface CodeProps {
-	snippet: ReactNode
+	code: ReactNode
 	language?: string
 	fontSize?: number
 	lineHeight?: number
+	basic?: {
+		hasBorder: boolean
+		hasColor: boolean
+	}
 }
 
 const Code: React.FC<CodeProps> = ({
-	snippet,
-	language,
+	code,
+	language = "text",
 	fontSize,
 	lineHeight,
+	basic,
 }) => {
-	return (
+	const basicStyles = [""]
+	if (basic?.hasBorder) basicStyles.push(styles["border"])
+	if (basic?.hasColor) basicStyles.push(styles["colored"])
+
+	return basic ? (
+		<code className={basicStyles.join(" ")}>{code}</code>
+	) : (
 		<SyntaxHighlighter
 			language={language}
 			style={codeStyle}
@@ -27,7 +38,7 @@ const Code: React.FC<CodeProps> = ({
 				},
 			}}
 		>
-			{snippet}
+			{code}
 		</SyntaxHighlighter>
 	)
 }

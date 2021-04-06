@@ -21,12 +21,12 @@ export default function Button(): JSX.Element {
 				</a>
 			</p>
 			<h2>Installation</h2>
-			<Code snippet={codeSnippets.ButtonInstall} language='text' />
+			<Code code={codeSnippets.ButtonInstall} language='text' />
 			<h2>Usage</h2>
 			<ComponentWrapper>
 				<ButtonComponent text='Button' />
 			</ComponentWrapper>
-			<Code snippet={codeSnippets.Button} />
+			<Code code={codeSnippets.Button} />
 			<h2>Accessibility</h2>
 			<p>
 				A{" "}
