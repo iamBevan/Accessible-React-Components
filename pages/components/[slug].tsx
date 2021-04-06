@@ -2,6 +2,7 @@ import { GetStaticPathsResult, GetStaticPropsResult } from "next"
 import dynamic from "next/dynamic"
 import { Fragment } from "react"
 import { getPageBySlug, getAllPages } from "../../lib/pages"
+import styles from "../../styles/pages/components.module.scss"
 
 interface PageProps {
 	slug: string | undefined
@@ -24,7 +25,11 @@ export default function Page({ slug }: PageProps): JSX.Element {
 		? dynamic(() => import(`../../mdx/components/${slug}.mdx`))
 		: Fragment
 
-	return <MDXContent />
+	return (
+		<div className={styles["main"]}>
+			<MDXContent />
+		</div>
+	)
 }
 
 export function getStaticProps({
