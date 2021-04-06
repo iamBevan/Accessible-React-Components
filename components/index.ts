@@ -1,3 +1,4 @@
+export * from "./abbr/abbr"
 export * from "./arrow/arrow"
 export * from "./button/button"
 export * from "./code/code"
