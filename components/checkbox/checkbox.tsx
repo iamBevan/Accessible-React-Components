@@ -1,22 +1,14 @@
 import React from "react"
-import { Item } from "../../misc/interfaces"
-import { List } from "./list"
 
 interface CheckboxProps {
-	legend: string
-	items: Item[]
+	label: string
+	checked: boolean
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ legend, items }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ label, checked }) => {
 	return (
-		<div>
-			<fieldset>
-				<legend>{legend}</legend>
-				<div></div>
-				<ul>
-					<List items={items} />
-				</ul>
-			</fieldset>
+		<div role='checkbox' aria-checked={checked} tabIndex={0}>
+			{label}
 		</div>
 	)
 }
