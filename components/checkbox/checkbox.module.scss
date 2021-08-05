@@ -1,80 +1,10 @@
-@use 'mixins';
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap');
-
-#__next{
-	height:100%;
-}
-
-:root{
-	--focus:#E60058;
-	--focus-shadow:#db0a5a57;
-
-	--font-family:'Montserrat', sans-serif;
-
-	--primary-dark:#393737;
-	--secondary-dark:#919191;
-	--tertiary-dark:rgba(148, 148, 148, 0.3);
-	--flamingo-pink: #fc8eac;
-}
-
-html, body{
-	padding:0; margin:0;
-	font-family:var(--font-family);
-	color:var(--primary-dark);
-	min-height:100vh;
-}
-
-a{
-	color:inherit;
-	text-decoration:none;
-}
-
-*{
-	box-sizing:border-box;
-}
-
-h1{
-	font-weight:700;
-}
-
-p, li{
-	line-height:1.5rem;
-	font-size:1rem;
-	font-weight:400;
-}
-
-strong{
-	font-size:1.05rem;
-}
-
-ul{
-	list-style:none;
-}
-
-pre{ margin:0.25rem 0; }
-
-.code{
-	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-	background-color:rgba(33, 33, 33, 0.05);
-	border-radius:3px; border:1px solid rgba(128, 128, 128, 0.322);
-	font-size:0.875em;
-	padding:0.2em 0.4em;
-}
-
-code{
-
-	@include mixins.code-standard;
-}
-
-
-kbd{
-	font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-	font-size:1.125rem;
-	padding:0.2em 0.4em;
-}
-
-[role="checkbox"] {
+ul.checkboxes {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1em;
+  }
+  
+  [role="checkbox"] {
 	display: inline-block;
 	position: relative;
 	padding-left: 1.4em;
@@ -106,7 +36,7 @@ kbd{
   [role="checkbox"][aria-checked="true"]::before {
 	border-color: hsl(216, 80%, 50%);
 	background: hsl(217, 95%, 68%);
-	background-image: linear-gradient(to bottom, hsl(217, 95%, 68%), var(--flamingo-pink));
+	background-image: linear-gradient(to bottom, hsl(217, 95%, 68%), hsl(216, 80%, 57%));
   }
   
   [role="checkbox"][aria-checked="mixed"]::after {
@@ -129,7 +59,7 @@ kbd{
   
   [role="checkbox"][aria-checked="mixed"]:active::before,
   [role="checkbox"][aria-checked="true"]:active::before {
-	background-image: linear-gradient(to bottom, var(--flamingo-pink), hsl(217, 95%, 68%));
+	background-image: linear-gradient(to bottom, hsl(216, 80%, 57%), hsl(217, 95%, 68%));
   }
   
   [role="checkbox"]:focus {
@@ -140,10 +70,8 @@ kbd{
 	width: 16px;
 	height: 16px;
 	box-sizing: content-box;
-	border-color: var(--focus-shadow);
+	border-color: hsl(216, 94%, 73%);
 	border-width: 3px;
 	border-radius: calc(0.2em + 3px);
-	box-shadow: inset 0 0 0 1px var(--focus)
+	box-shadow: inset 0 0 0 1px hsl(216, 80%, 50%);
   }
-  
-abbr{ color:var(--focus); }

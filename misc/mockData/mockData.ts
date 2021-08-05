@@ -16,3 +16,10 @@ export const items: Item[] = [
 	{ name: "Kestral", id: "kestral" },
 	{ name: "Spider", id: "spider" },
 ]
+
+export const checkboxItems: Item[] = [
+	{ name: "Sword", id: "sword" },
+	{ name: "Shield", id: "shield" },
+	{ name: "Bow", id: "bow" },
+	{ name: "Arrows", id: "arrows" },
+]
