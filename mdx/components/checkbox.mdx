@@ -1,1 +1,33 @@
+import {
+	Abbr,
+	Checkbox as CheckboxComponent,
+	Code,
+	ComponentWrapper,
+    Kbd
+} from "../../components"
+import { codeSnippets } from "../../misc"
+
+export const meta = {
+	authors: ["Kevin Bevan"],
+}
+
 # Checkbox
+
+Accessible `Checkbox` component that follows the [WAI-ARIA Checkbox Pattern](https://www.w3.org/TR/wai-aria-practices/#checkbox), 
+which means you'll have a working dual or tri-state toggle button regardless of the type of the underlying element.
+
+
+## Installation
+
+
+## Usage
+
+<ComponentWrapper>
+	<CheckboxComponent checked={false} label={"Checkbox"} />
+</ComponentWrapper>
+
+## Accessibility
+
+### Keyboard Interaction
+
+## Props

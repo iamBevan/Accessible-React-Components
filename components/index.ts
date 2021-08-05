@@ -1,6 +1,7 @@
 export * from "./abbr/abbr"
 export * from "./arrow/arrow"
 export * from "./button/button"
+export * from "./checkbox/checkbox"
 export * from "./code/code"
 export * from "./component-wrapper/component-wrapper"
 export * from "./custom-link/custom-link"

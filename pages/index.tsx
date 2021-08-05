@@ -1,6 +1,5 @@
 import styles from "../styles/pages/home.module.scss"
 import Link from "next/link"
-import { Checkbox } from "../components/checkbox/checkbox"
 
 export default function Home(): JSX.Element {
 	return (
@@ -22,10 +21,6 @@ export default function Home(): JSX.Element {
 					<Link href='/blog'>Blog</Link>
 				</div>
 			</main>
-
-			<>
-				<Checkbox checked={false} label={"Checkbox"} />
-			</>
 
 			<footer className={styles.footer}>
 				<a
