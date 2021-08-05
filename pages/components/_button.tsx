@@ -1,17 +1,17 @@
 import { Button as ButtonComponent } from "../../components/button/button"
 import styles from "../../styles/pages/components.module.scss"
-import { codeSnippets, codeStyle } from "../../misc"
-import SyntaxHighlighter from "react-syntax-highlighter"
+import { codeSnippets } from "../../misc"
 import { ComponentWrapper } from "../../components/component-wrapper/component-wrapper"
+import { Code } from "../../components/code/code"
 
 export default function Button(): JSX.Element {
 	return (
 		<main className={styles["main"]}>
 			<h1>Button</h1>
 			<p>
-				A button that enables users to trigger an action or event, such
-				as submitting a form, opening a dialog, canceling an action, or
-				performing a delete operation. It follows{" "}
+				A <code>Button</code> that enables users to trigger an action or
+				event, such as submitting a form, opening a dialog, canceling an
+				action, or performing a delete operation. It follows{" "}
 				<a
 					href='https://www.w3.org/TR/wai-aria-practices/#button'
 					target='_blank'
@@ -21,24 +21,12 @@ export default function Button(): JSX.Element {
 				</a>
 			</p>
 			<h2>Installation</h2>
-			<SyntaxHighlighter
-				language='javascript'
-				style={codeStyle}
-				codeTagProps={{ style: { fontSize: 16, lineHeight: 1.4 } }}
-			>
-				npm i flamingo/Button
-			</SyntaxHighlighter>
+			<Code code={codeSnippets.ButtonInstall} language='text' />
 			<h2>Usage</h2>
 			<ComponentWrapper>
 				<ButtonComponent text='Button' />
 			</ComponentWrapper>
-			<SyntaxHighlighter
-				language='javascript'
-				style={codeStyle}
-				codeTagProps={{ style: { fontSize: 16, lineHeight: 1.4 } }}
-			>
-				{codeSnippets.Button}
-			</SyntaxHighlighter>
+			<Code code={codeSnippets.Button} />
 			<h2>Accessibility</h2>
 			<p>
 				A{" "}
@@ -111,10 +99,13 @@ export default function Button(): JSX.Element {
 			<p>When the button has focus:</p>
 			<ul>
 				<li>
-					<kbd>Space</kbd>: Activates the button.
+					<kbd>Space:</kbd> Activates the button.
+					<ComponentWrapper>
+						<ButtonComponent text='Button' />
+					</ComponentWrapper>
 				</li>
 				<li>
-					<kbd>Enter</kbd>: Activates the button.
+					<kbd>Enter:</kbd> Activates the button.
 				</li>
 				<li>
 					Following button activation, focus is set depending on the
@@ -162,6 +153,28 @@ export default function Button(): JSX.Element {
 				</li>
 			</ul>
 			<h2>Props</h2>
+			<ul className={styles["props"]}>
+				<li>
+					<code className='code'>text</code>
+					<code>string</code>
+				</li>
+				<li>
+					<code className='code'>ariaDisabled</code>
+					<code>boolean | undefined</code>
+				</li>
+				<li>
+					<code className='code'>ariaLabel</code>
+					<code>boolean | undefined</code>
+				</li>
+				<li>
+					<code className='code'>disabled</code>
+					<code>boolean | undefined</code>
+				</li>
+				<li>
+					<code className='code'>customStyles</code>
+					<code>React.CSSProperties | undefined</code>
+				</li>
+			</ul>
 		</main>
 	)
 }

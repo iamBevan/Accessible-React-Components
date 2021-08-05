@@ -47,7 +47,6 @@ module.exports = {
 		"import/extensions": "off",
 		"react/prop-types": "off",
 		"jsx-a11y/anchor-is-valid": "off",
-		"react/jsx-props-no-spreading": ["error", { custom: "ignore" }],
 		"prettier/prettier": [
 			"error",
 			{
@@ -68,10 +67,9 @@ module.exports = {
 		"@typescript-eslint/no-unsafe-assignment": "off",
 		"@typescript-eslint/no-unsafe-member-access": "off",
 		"@typescript-eslint/no-unsafe-call": "off",
-		// "@typescript-eslint/await-thenable": "off",
-		// "@typescript-eslint/no-floating-promises": "off",
-		// "@typescript-eslint/no-implied-eval": "off",
-		// "@typescript-eslint/no-misused-promises": "off",
+		"react/display-name": "off",
+		"jsx-a11y/heading-has-content": "off",
+		"react/jsx-props-no-spreading": "off",
 	},
 	settings: {
 		react: {
