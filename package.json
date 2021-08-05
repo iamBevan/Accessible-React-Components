@@ -47,7 +47,6 @@
 		"prettier": "^2.2.1",
 		"react-syntax-highlighter": "^15.4.3",
 		"sass": "^1.32.8",
-		"stylelint": "^13.11.0",
 		"typescript": "^4.1.5"
 	},
 	"husky": {
@@ -56,9 +55,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{css}": "stylelint --fix --syntax=css",
-		"*.{scss}": "stylelint --fix --syntax=scss",
-		"*.{json,js,tsx,ts,yml,html}": "prettier --write",
+		"*.{json,js,tsx,ts,yml,html,scss}": "prettier --write",
 		"!(*.scss.d).{ts,tsx}": "eslint --fix --max-warnings=0"
 	}
 }
