@@ -1,12 +1,31 @@
-import React, { ReactNode } from "react"
+import React, { JSXElementConstructor, ReactElement, useState } from "react"
 import styles from "./component-wrapper.module.scss"
 
 interface ComponentWrapperProps {
-	children: ReactNode
+	children: ReactElement<unknown, string | JSXElementConstructor<unknown>>
+	checkbox?: {
+		label: string
+	}
 }
 
-const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ children }) => {
-	return <div className={styles["container"]}>{children}</div>
+const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
+	children,
+	checkbox,
+}) => {
+	const [state, setState] = useState(true)
+
+	const toggleState = (): void => {
+		setState(!state)
+	}
+	return (
+		<div className={styles["container"]}>
+			{checkbox &&
+				React.cloneElement(children, {
+					checked: state,
+					setChecked: toggleState,
+				})}
+		</div>
+	)
 }
 
 export { ComponentWrapper }
