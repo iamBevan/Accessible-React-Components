@@ -70,6 +70,7 @@ module.exports = {
 		"react/display-name": "off",
 		"jsx-a11y/heading-has-content": "off",
 		"react/jsx-props-no-spreading": "off",
+		"jsx-a11y/click-events-have-key-events": "off",
 	},
 	settings: {
 		react: {
