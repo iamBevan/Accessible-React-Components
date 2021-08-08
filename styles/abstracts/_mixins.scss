@@ -9,29 +9,24 @@
 
 */
 
-@mixin respond($breakpoint){
-
-	@if $breakpoint == phone{
-
-		@media (max-width:635px){
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media (max-width: 635px) {
 			@content;
 		}
 	}
-	@if $breakpoint == tab-port{
-
-		@media (max-width:815px){
+	@if $breakpoint == tab-port {
+		@media (max-width: 815px) {
 			@content;
 		}
 	}
-	@if $breakpoint == tab-land{
-
-		@media (max-width:1200px){
+	@if $breakpoint == tab-land {
+		@media (max-width: 1200px) {
 			@content;
 		}
 	}
-	@if $breakpoint == big-desktop{
-
-		@media (max-width:1800px){
+	@if $breakpoint == big-desktop {
+		@media (max-width: 1800px) {
 			@content;
 		}
 	}

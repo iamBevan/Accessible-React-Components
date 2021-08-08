@@ -1,41 +1,41 @@
 @use '../mixins';
 
-.main{
-	margin:auto;
-	max-width:850px;
+.main {
+	margin: auto;
+	max-width: 850px;
 
-	h2{
-		margin-top:50px;
+	h2 {
+		margin-top: 50px;
 	}
 
-	> ul{
-		position:relative;
-		list-style:none; list-style-position:inside;
+	> ul {
+		position: relative;
+		list-style: none;
+		list-style-position: inside;
 
-		li{
-			margin:2rem 0;
+		li {
+			margin: 2rem 0;
 		}
 
-		> li{
-
-			&::before{
-				content:'';
-				position:absolute;
-				display:block;
-				height:16px;
-				margin:4px 0 0 -1.25rem;
-				left:-22;
-				border-left:6px solid var(--focus);
+		> li {
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				height: 16px;
+				margin: 4px 0 0 -1.25rem;
+				left: -22;
+				border-left: 6px solid var(--focus);
 			}
 
-			ul > li::before{
-				content:'';
-				position:absolute;
-				display:block;
-				height:16px;
-				margin:4px 0 0 -1.25rem;
-				left:-22;
-				border-left:2px solid var(--focus);
+			ul > li::before {
+				content: "";
+				position: absolute;
+				display: block;
+				height: 16px;
+				margin: 4px 0 0 -1.25rem;
+				left: -22;
+				border-left: 2px solid var(--focus);
 			}
 		}
 	}

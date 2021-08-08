@@ -1,108 +1,123 @@
-.container{
-	height:60px; width:200px;
+.container {
+	height: 60px;
+	width: 200px;
 
-	.sr-label{
-		position:absolute;
-		left:-10000px;
-		top:auto;
-		width:1px;
-		height:1px;
-		overflow:hidden;
+	.sr-label {
+		position: absolute;
+		left: -10000px;
+		top: auto;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
 	}
 
-	.wrapper{
-		height:0;
-		margin-top:6px;
-		z-index:200;
+	.wrapper {
+		height: 0;
+		margin-top: 6px;
+		z-index: 200;
 
-		button{
-			display:flex;
-			justify-content:space-between; align-items:center;
-			width:100%; height:40px;
-			padding:0 8px;
-			font-size:16px; font-weight:500;
-			border-radius:5px; border:2px solid var(--secondary-dark);
-			background-color:#fff; color:var(--primary-dark);
-			text-align:left;
-			transition:0.25s;transition-property:border;
+		button {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+			height: 40px;
+			padding: 0 8px;
+			font-size: 16px;
+			font-weight: 500;
+			border-radius: 5px;
+			border: 2px solid var(--secondary-dark);
+			background-color: #fff;
+			color: var(--primary-dark);
+			text-align: left;
+			transition: 0.25s;
+			transition-property: border;
 
-			&:focus{
-				outline:0;
-				border:2px solid var(--focus);
-				box-shadow:0 0 0 4px var(--focus-shadow);
+			&:focus {
+				outline: 0;
+				border: 2px solid var(--focus);
+				box-shadow: 0 0 0 4px var(--focus-shadow);
 			}
 
-			&[aria-expanded='true']{
-				border-color:var(--tertiary-dark);
+			&[aria-expanded="true"] {
+				border-color: var(--tertiary-dark);
 
-				&:hover{
-					border-color:var(--secondary-dark);
+				&:hover {
+					border-color: var(--secondary-dark);
 				}
 			}
 
-			&:hover{
-				border-color:var(--primary-dark);
+			&:hover {
+				border-color: var(--primary-dark);
 			}
 
-			.arrow{
-				height:20px; width:20px;
+			.arrow {
+				height: 20px;
+				width: 20px;
 			}
 		}
 
-		.listbox{
-			height:215px; width:100%;
-			padding:0; margin:6px 0 0 0;
-			background-color:#fff;
-			visibility:hidden;
-			opacity:0;
-			position:relative;
-			overflow-y:auto;
-			list-style:none;
-			border-radius:5px; border:2px solid #949494;
-			z-index:100;
+		.listbox {
+			height: 215px;
+			width: 100%;
+			padding: 0;
+			margin: 6px 0 0 0;
+			background-color: #fff;
+			visibility: hidden;
+			opacity: 0;
+			position: relative;
+			overflow-y: auto;
+			list-style: none;
+			border-radius: 5px;
+			border: 2px solid #949494;
+			z-index: 100;
 
-			box-shadow:0 8px 16px 0 rgba(0, 0, 0, 0.1);
+			box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 
-			&::-webkit-scrollbar{
-				display:none;
+			&::-webkit-scrollbar {
+				display: none;
 			}
 
-			&:focus{
-				outline:0;
-				border:2px solid var(--focus);
+			&:focus {
+				outline: 0;
+				border: 2px solid var(--focus);
 			}
 
-			&.visible{
-				visibility:visible;
-				opacity:1;
-				transform:translateY(0);
+			&.visible {
+				visibility: visible;
+				opacity: 1;
+				transform: translateY(0);
 			}
 
-			li{
-				margin:3px; padding:6px 8px 6px 8px;
-				display:block;
-				font-size:14px; font-weight:500; text-align:left;
-				color:var(--primary-dark);
-				position:relative;
-				border:none;
-				background-color:#fff;
-				border-radius:5px;
-				transition:0.1s; transition-property:background-color, color;
+			li {
+				margin: 3px;
+				padding: 6px 8px 6px 8px;
+				display: block;
+				font-size: 14px;
+				font-weight: 500;
+				text-align: left;
+				color: var(--primary-dark);
+				position: relative;
+				border: none;
+				background-color: #fff;
+				border-radius: 5px;
+				transition: 0.1s;
+				transition-property: background-color, color;
 
-				&:hover{
-					color:#fff;
-					background-color:var(--focus);
-					cursor:pointer;
+				&:hover {
+					color: #fff;
+					background-color: var(--focus);
+					cursor: pointer;
 				}
 
-				&[aria-selected='true']{
-					color:#fff;
-					background-color:var(--focus);
+				&[aria-selected="true"] {
+					color: #fff;
+					background-color: var(--focus);
 
-					&:hover{
-						color:#fff;
-						background-color:#F75996;
-						box-shadow:0 0 0 2px var(--focus), inset 0 0 0 1px #FFF;
+					&:hover {
+						color: #fff;
+						background-color: #f75996;
+						box-shadow: 0 0 0 2px var(--focus), inset 0 0 0 1px #fff;
 					}
 				}
 			}

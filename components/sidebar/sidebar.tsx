@@ -21,9 +21,8 @@ const Sidebar: React.FC = () => {
 	})
 
 	useEffect(() => {
-		let focusableElements = document.querySelectorAll<HTMLAnchorElement>(
-			"a[href]"
-		)
+		let focusableElements =
+			document.querySelectorAll<HTMLAnchorElement>("a[href]")
 		let firstTabStop = focusableElements[0]
 		let lastTabStop = focusableElements[focusableElements.length - 1]
 

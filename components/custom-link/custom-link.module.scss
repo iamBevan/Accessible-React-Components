@@ -1,15 +1,17 @@
-.link{
-	color:var(--focus);
-	text-decoration:none; font-weight:500;
-	padding:2px 2px; margin:-2px -2px;
+.link {
+	color: var(--focus);
+	text-decoration: none;
+	font-weight: 500;
+	padding: 2px 2px;
+	margin: -2px -2px;
 
-	&:hover{
-		text-decoration:underline;
+	&:hover {
+		text-decoration: underline;
 	}
 
-	&:focus{
-		box-shadow:0 0 0 4px var(--focus-shadow);
-		outline:none;
-		text-decoration:none;
+	&:focus {
+		box-shadow: 0 0 0 4px var(--focus-shadow);
+		outline: none;
+		text-decoration: none;
 	}
 }

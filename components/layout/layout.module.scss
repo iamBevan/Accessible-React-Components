@@ -1,65 +1,66 @@
 @import "../../styles/abstracts/mixins";
 
-.container{
-	width:100%;
-	display:flex;
+.container {
+	width: 100%;
+	display: flex;
 
-		.sidebar{
-		padding:2rem;
-		border-right:1px solid rgba(128, 128, 128, 0.4);
-		display:flex; flex-direction:column;
+	.sidebar {
+		padding: 2rem;
+		border-right: 1px solid rgba(128, 128, 128, 0.4);
+		display: flex;
+		flex-direction: column;
 
-		.heading{
-			display:flex; align-items:center;
+		.heading {
+			display: flex;
+			align-items: center;
 
-			h1{
-				display:block;
+			h1 {
+				display: block;
 			}
-			span{
-				font-size:3rem;
-			}
-		}
-
-		a{
-			&:hover{
-				color:var(--focus);
-			}
-			&:focus{
-				border-bottom:2px solid var(--focus);
-				outline:0;
+			span {
+				font-size: 3rem;
 			}
 		}
 
+		a {
+			&:hover {
+				color: var(--focus);
+			}
+			&:focus {
+				border-bottom: 2px solid var(--focus);
+				outline: 0;
+			}
+		}
 
+		.nav {
+			width: 100%;
+			padding-top: 32px;
 
-		.nav{
-			width:100%; padding-top:32px;
+			ul {
+				border-top: 1px solid rgba(128, 128, 128, 0.4);
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				padding-top: 16px;
+				list-style: none;
 
-			ul{
-				border-top:1px solid rgba(128, 128, 128, 0.4);
-				margin:0; padding:0; width:100%; padding-top:16px;
-				list-style:none;
-
-				li{
-					padding:6px 0;
-					font-weight:500;
-					margin:1rem 0;
+				li {
+					padding: 6px 0;
+					font-weight: 500;
+					margin: 1rem 0;
 				}
 			}
 		}
 	}
-	.content{
-		flex:1;
+	.content {
+		flex: 1;
 		@include respond(tab-port) {
 			display: flex;
 			justify-content: center;
 		}
 	}
 
-	footer{
-		align-self:flex-end;
+	footer {
+		align-self: flex-end;
 	}
-
-	
 }
-
