@@ -13,6 +13,7 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, setChecked }) => {
 			aria-checked={checked}
 			tabIndex={0}
 			onClick={setChecked}
+			data-testid='checkbox'
 		>
 			{label}
 		</div>
