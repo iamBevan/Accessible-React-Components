@@ -1,4 +1,6 @@
-import React from "react"
+import React, { KeyboardEvent } from "react"
+import { Key } from "../../helpers/keyCodes"
+import styles from "./checkbox.module.scss"
 
 export interface CheckboxProps {
 	label: string
@@ -7,13 +9,22 @@ export interface CheckboxProps {
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({ label, checked, setChecked }) => {
+	const handleClick = (event: KeyboardEvent): void => {
+		if (event.code === Key.Space) {
+			event.preventDefault()
+			setChecked()
+		}
+	}
+
 	return (
 		<div
 			role='checkbox'
 			aria-checked={checked}
 			tabIndex={0}
-			onClick={setChecked}
 			data-testid='checkbox'
+			className={styles["checkbox"]}
+			onClick={setChecked}
+			onKeyDown={handleClick}
 		>
 			{label}
 		</div>
