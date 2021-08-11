@@ -1,0 +1,10 @@
+.container {
+	fieldset {
+		legend {
+		}
+		.checkboxes {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

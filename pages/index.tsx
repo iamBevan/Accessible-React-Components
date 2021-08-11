@@ -1,5 +1,6 @@
 import styles from "../styles/pages/home.module.scss"
 import Link from "next/link"
+import { CheckboxGroup } from "../components/checkbox-group/checkbox-group"
 
 export default function Home(): JSX.Element {
 	return (
@@ -21,6 +22,22 @@ export default function Home(): JSX.Element {
 					<Link href='/blog'>Blog</Link>
 				</div>
 			</main>
+
+			<CheckboxGroup
+				legend={"Legend"}
+				items={[
+					{
+						label: "CHECKBOX 1",
+						checked: true,
+						// setChecked: () => console.log("1 checked"),
+					},
+					{
+						label: "CHECKBOX 2",
+						checked: false,
+						// setChecked: () => console.log("2 checked"),
+					},
+				]}
+			/>
 
 			<footer className={styles.footer}>
 				<a
