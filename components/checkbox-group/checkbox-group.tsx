@@ -13,19 +13,19 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 	items,
 	legend,
 }): JSX.Element => {
-	const [toggleHandler, state] = useCheckboxTreeState(items)
+	const [toggleChecked, checkboxes] = useCheckboxTreeState(items)
 
 	return (
 		<div className={styles["container"]}>
 			<fieldset>
 				<legend>{legend}</legend>
 				<div className={styles["checkboxes"]}>
-					{state.map(item => (
+					{checkboxes.map(item => (
 						<Checkbox
 							key={item.label}
 							label={item.label}
 							checked={item.checked}
-							setChecked={toggleHandler(item)}
+							setChecked={toggleChecked(item)}
 						/>
 					))}
 				</div>

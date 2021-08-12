@@ -4,18 +4,18 @@ import { Item } from "../components/checkbox-group/checkbox-group"
 type CheckboxTreeState = [(item: Item) => () => void, Item[]]
 
 const useCheckboxTreeState = (items: Item[]): CheckboxTreeState => {
-	const [state, setState] = useState<Item[]>(items)
+	const [checkboxes, setState] = useState(items)
 
-	const toggleHandler = (item: Item) => () => {
-		const findItemIndex = state.indexOf(item)
-		let newItems = [...state]
+	const toggleChecked = (item: Item) => () => {
+		const findItemIndex = checkboxes.indexOf(item)
+		let newItems = [...checkboxes]
 
-		newItems[findItemIndex].checked = !state[findItemIndex].checked
+		newItems[findItemIndex].checked = !checkboxes[findItemIndex].checked
 
 		setState(newItems)
 	}
 
-	return [toggleHandler, state]
+	return [toggleChecked, checkboxes]
 }
 
 export { useCheckboxTreeState }
