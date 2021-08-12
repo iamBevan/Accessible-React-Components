@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCheckboxTreeState } from "../../hooks/useCheckboxTree"
 import { Checkbox, CheckboxProps } from "../checkbox/checkbox"
 import styles from "./checkbox-group.module.scss"
 
-type Item = Omit<CheckboxProps, "setChecked">
+export type Item = Omit<CheckboxProps, "setChecked">
 
 interface CheckboxGroupProps {
 	legend: string
@@ -13,44 +13,25 @@ const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
 	items,
 	legend,
 }): JSX.Element => {
-	const [checkedState, setCheckedState] = useState<Item[]>(items)
-
-	const checkboxes = useCallback(() => {
-		const toggleHandler = (item: Item) => () => {
-			const findItemIndex = checkedState.indexOf(item)
-
-			let newItems = checkedState
-
-			newItems[findItemIndex] = {
-				...newItems[findItemIndex],
-				checked: false,
-			}
-
-			// newItems[findItem].checked = false
-			console.log("newItems", newItems)
-
-			setCheckedState(newItems)
-		}
-		return checkedState.map(item => (
-			<Checkbox
-				key={item.label}
-				label={item.label}
-				checked={item.checked}
-				setChecked={toggleHandler(item)}
-			/>
-		))
-	}, [checkedState])
+	const [toggleHandler, state] = useCheckboxTreeState(items)
 
 	return (
 		<div className={styles["container"]}>
 			<fieldset>
 				<legend>{legend}</legend>
 				<div className={styles["checkboxes"]}>
-					{checkboxes()}
-					{console.log("state", checkedState)}
+					{state.map(item => (
+						<Checkbox
+							key={item.label}
+							label={item.label}
+							checked={item.checked}
+							setChecked={toggleHandler(item)}
+						/>
+					))}
 				</div>
 			</fieldset>
 		</div>
 	)
 }
+
 export { CheckboxGroup }
