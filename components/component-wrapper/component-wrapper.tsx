@@ -19,11 +19,14 @@ const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
 	}
 	return (
 		<div className={styles["container"]}>
-			{checkbox &&
+			{checkbox ? (
 				React.cloneElement(children, {
 					checked: state,
 					setChecked: toggleState,
-				})}
+				})
+			) : (
+				<div>{children}</div>
+			)}
 		</div>
 	)
 }
