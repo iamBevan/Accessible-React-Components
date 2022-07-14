@@ -20,7 +20,8 @@
 		"forceConsistentCasingInFileNames": true,
 		"resolveJsonModule": true,
 		"importsNotUsedAsValues": "preserve",
-		"isolatedModules": true
+		"isolatedModules": true,
+		"incremental": true
 	},
 	"include": [
 		"next-env.d.ts",
