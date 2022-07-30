@@ -6,7 +6,7 @@ import "../styles/globals.scss"
 import MDXComponents from "../helpers/MDXComponents"
 import NextNProgress from "nextjs-progressbar"
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+function MyApp({ Component, pageProps }: AppProps): React.ReactNode {
 	const Container = pageProps.layout === "components" ? Layout : Fragment
 
 	return (

@@ -8,7 +8,11 @@ export interface CheckboxProps {
 	setChecked: () => void
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, checked, setChecked }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+	label,
+	checked,
+	setChecked,
+}): JSX.Element => {
 	const handleClick = (event: KeyboardEvent): void => {
 		if (event.code === Key.Space) {
 			event.preventDefault()
