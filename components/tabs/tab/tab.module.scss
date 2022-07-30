@@ -1,0 +1,14 @@
+.tab {
+	font-size: 1em;
+	padding: 10px 30px;
+	cursor: pointer;
+	background: white;
+	border: 0;
+	outline: 0;
+	text-transform: capitalize;
+	font-family: Montserrat;
+}
+
+.tab[aria-selected="true"] {
+	border-bottom: 3px solid var(--flamingo-pink);
+}

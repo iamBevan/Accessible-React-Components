@@ -13,7 +13,7 @@ describe("Checkbox", () => {
 		component = getComponent({
 			setChecked: onChange,
 			checked: false,
-			label: "Cool Label",
+			label: "Cool cock",
 		})
 	})
 
